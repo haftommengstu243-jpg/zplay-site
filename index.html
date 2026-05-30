@@ -833,13 +833,13 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
         </div>
         <div style="background:var(--bg3);border:2px solid #ff4db8;border-radius:12px;padding:16px;margin-bottom:16px;text-align:center;">
           <div style="font-size:11px;color:var(--text2);margin-bottom:6px;letter-spacing:1px;">TELEBIRR NUMBER</div>
-          <div style="font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#ff4db8;letter-spacing:2px;">0987 456 575</div>
-          <div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--text);">Asmelash Geberu</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#ff4db8;letter-spacing:2px;">0979 508 190</div>
+          <div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--text);">Mhret</div>
           <button onclick="copyTelebirrNum()" style="margin-top:10px;background:#ff4db8;color:#000;border:none;border-radius:6px;padding:7px 18px;font-weight:700;font-size:12px;cursor:pointer;">📋 Copy Number</button>
         </div>
         <div style="margin-bottom:14px;">
           <div style="font-size:12px;color:var(--text2);margin-bottom:6px;">Amount to Deposit (ETB)</div>
-          <input type="number" id="depositAmount" placeholder="Enter amount..." min="50" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px 14px;font-size:16px;font-weight:700;outline:none;" oninput="this.style.borderColor='var(--accent)'">
+          <input type="number" id="depositAmount" placeholder="Enter amount..." min="1" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px 14px;font-size:16px;font-weight:700;outline:none;" oninput="this.style.borderColor='var(--accent)'">
           <div style="display:flex;gap:6px;margin-top:8px;">
             <div onclick="document.getElementById('depositAmount').value=50" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">50</div>
             <div onclick="document.getElementById('depositAmount').value=100" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">100</div>
@@ -1404,13 +1404,13 @@ function openDepositModal() { showDepositStep(1); document.getElementById('page-
 function closeDepositOutside(e) { if (e.target === document.getElementById('page-deposit')) closePage('deposit'); }
 function showDepositStep(n) { document.getElementById('depositStep1').style.display = n===1?'block':'none'; document.getElementById('depositStep2').style.display = n===2?'block':'none'; }
 function selectDepositMethod(m) { if (m === 'telebirr') showDepositStep(2); }
-function copyTelebirrNum() { navigator.clipboard.writeText('0987456575').catch(()=>{}); showToast('✅ Number copied!'); }
+function copyTelebirrNum() { navigator.clipboard.writeText('0979508190').catch(()=>{}); showToast('✅ Number copied!'); }
 const BACKEND_URL = 'https://zplay-backend.onrender.com';
 
 async function confirmDeposit() {
   const amt = parseFloat(document.getElementById('depositAmount').value) || 0;
   const txId = (document.getElementById('depositTxId').value || '').trim();
-  if (amt < 50) { showToast('❌ Minimum deposit ETB 50', true); return; }
+  if (amt < 1) { showToast('❌ Minimum deposit ETB 1', true); return; }
   if (!txId) { showToast('❌ Transaction ID አስገባ!', true); return; }
   const btn = document.querySelector('[onclick="confirmDeposit()"]');
   if (btn) { btn.disabled = true; btn.textContent = '⏳ Verifying...'; }
