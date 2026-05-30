@@ -1310,50 +1310,8 @@ function toggleMarkets(i) {
 async function fetchMatchMarkets(i) {
   const m = MATCHES_30[i];
   if (!m) return;
-  const matchName = `${m.home} vs ${m.away}`;
-  const cacheKey = 'qb_mkts_' + matchName.replace(/\s/g,'_') + '_' + new Date().toISOString().slice(0,10);
-  
-  // Check cache first
-  try {
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) {
-      renderMarketsHTML(i, JSON.parse(cached), m);
-      return;
-    }
-  } catch(e) {}
-
-  try {
-    const prompt = `Generate football betting markets for this match: ${m.home} (home) vs ${m.away} (away).
-Base odds: home win=${m.w1}, draw=${m.draw}, away win=${m.w2}.
-
-Respond ONLY with a JSON object. No markdown, no explanation. Format:
-{
-  "dc": {"1X": 1.22, "12": 1.30, "X2": 1.45},
-  "ou": {"o15": 1.35, "u15": 2.90, "o25": 1.85, "u25": 1.95, "o35": 2.60, "u35": 1.48},
-  "btts": {"yes": 1.78, "no": 2.02},
-  "ht": {"1": 2.80, "X": 2.10, "2": 5.50},
-  "cs": [["1-0",6.5],["2-0",8.0],["2-1",9.5],["1-1",6.0],["0-0",7.5],["0-1",8.5],["1-2",12.0]],
-  "ah": {"home-0.5": 2.10, "away-0.5": 1.72},
-  "cards": {"o3.5": 1.90, "u3.5": 1.90},
-  "corners": {"o9.5": 1.88, "u9.5": 1.92}
-}
-Make odds realistic and consistent with the base odds provided.`;
-
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 800, messages: [{ role: 'user', content: prompt }] })
-    });
-    const data = await resp.json();
-    const text = (data.content || []).map(c => c.text || '').join('').replace(/```json|```/g,'').trim();
-    const mkts = JSON.parse(text);
-    try { localStorage.setItem(cacheKey, JSON.stringify(mkts)); } catch(e) {}
-    renderMarketsHTML(i, mkts, m);
-  } catch(err) {
-    // Fallback: generate from base odds
-    const mkts = generateFallbackMarkets(m);
-    renderMarketsHTML(i, mkts, m);
-  }
+  const mkts = generateFallbackMarkets(m);
+  renderMarketsHTML(i, mkts, m);
 }
 
 function generateFallbackMarkets(m) {
@@ -1377,4 +1335,35 @@ function renderMarketsHTML(i, mkts, m) {
   }
   let html = '';
   // Double Chance
-  html += `<div class="market-title">Dou
+  html += `<div class="market-title">Double Chance</div><div class="market-odds-row">`;
+  html += btn('1X','DC-1X', mkts.dc['1X']) + btn('12','DC-12', mkts.dc['12']) + btn('X2','DC-X2', mkts.dc['X2']);
+  html += `</div>`;
+  // Over/Under
+  html += `<div class="market-title">Over / Under Goals</div><div class="market-odds-row" style="flex-wrap:wrap;">`;
+  html += btn('O 1.5','O1.5', mkts.ou.o15) + btn('U 1.5','U1.5', mkts.ou.u15) + btn('O 2.5','O2.5', mkts.ou.o25) + btn('U 2.5','U2.5', mkts.ou.u25) + btn('O 3.5','O3.5', mkts.ou.o35) + btn('U 3.5','U3.5', mkts.ou.u35);
+  html += `</div>`;
+  // BTTS
+  html += `<div class="market-title">Both Teams to Score</div><div class="market-odds-row">`;
+  html += btn('Yes','BTTS-Y', mkts.btts.yes) + btn('No','BTTS-N', mkts.btts.no);
+  html += `</div>`;
+  // Halftime
+  html += `<div class="market-title">Half Time Result</div><div class="market-odds-row">`;
+  html += btn('1','HT-1', mkts.ht['1']) + btn('X','HT-X', mkts.ht['X']) + btn('2','HT-2', mkts.ht['2']);
+  html += `</div>`;
+  // Correct Score
+  html += `<div class="market-title">Correct Score</div><div class="market-odds-row" style="flex-wrap:wrap;">`;
+  for (const [score, odd] of mkts.cs) {
+    html += btn(score, 'CS-'+score, odd);
+  }
+  html += `</div>`;
+  // Asian Handicap
+  html += `<div class="market-title">Asian Handicap</div><div class="market-odds-row">`;
+  const ahKeys = Object.keys(mkts.ah);
+  for (const k of ahKeys) { html += btn(k.replace('home','Home').replace('away','Away'), 'AH-'+k, mkts.ah[k]); }
+  html += `</div>`;
+  // Cards
+  html += `<div class="market-title">Total Cards</div><div class="market-odds-row">`;
+  html += btn('O 3.5','Cards-O', mkts.cards.o35) + btn('U 3.5','Cards-U', mkts.cards.u35);
+  html += `</div>`;
+  // Corners
+  html += `<div cl
