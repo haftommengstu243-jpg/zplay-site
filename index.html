@@ -3,33 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Habesha Bet</title>
+<title>Quick Birr</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0d1117;
-  --bg2: #161b22;
-  --bg3: #1c2333;
-  --card: #1e2736;
-  --accent: #f5a623;
-  --accent2: #e8941a;
-  --green: #00c853;
-  --red: #ff3d3d;
-  --blue: #1a8cff;
-  --text: #e6edf3;
-  --text2: #8b949e;
-  --border: #30363d;
-  --live: #ff3d3d;
+  --bg: #080c14;
+  --bg2: #0c1220;
+  --bg3: #111827;
+  --card: #141e2e;
+  --card2: #19253a;
+  --accent: #f0b429;
+  --accent2: #d4980f;
+  --accent-glow: rgba(240,180,41,0.18);
+  --green: #10d48a;
+  --green-glow: rgba(16,212,138,0.15);
+  --red: #f43f5e;
+  --red-glow: rgba(244,63,94,0.15);
+  --blue: #38bdf8;
+  --text: #e2eaf5;
+  --text2: #64748b;
+  --text3: #94a3b8;
+  --border: #1e2d45;
+  --border2: #253552;
+  --live: #f43f5e;
+  --gold: #f0b429;
+  --radius: 14px;
+  --radius-sm: 8px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-width:430px;margin:0 auto;min-height:100vh;overflow-x:hidden;}
 
 /* TOPBAR */
-.topbar{background:var(--bg2);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);}
+.topbar{background:rgba(12,18,32,0.97);backdrop-filter:blur(12px);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(240,180,41,0.12);box-shadow:0 1px 20px rgba(0,0,0,0.5);}
 .logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;}
-.logo .h{color:var(--accent);}
+.logo .h{color:var(--accent);text-shadow:0 0 16px rgba(240,180,41,0.5);}
 .topbar-right{display:flex;align-items:center;gap:10px;}
-.search-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;}
+.search-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text3);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;transition:all 0.2s;}
+.search-btn:hover{border-color:var(--accent);color:var(--accent);}
 
 /* SEARCH OVERLAY */
 .search-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:300;display:none;flex-direction:column;padding:16px;}
@@ -46,14 +56,17 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 .search-result-time{font-size:11px;color:var(--accent);margin-top:3px;}
 .search-empty{text-align:center;color:var(--text2);padding:40px 20px;font-size:14px;}
 .search-cat{font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;margin-bottom:8px;margin-top:4px;}
-.balance-btn{background:var(--bg3);border:1px solid var(--accent);color:var(--accent);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;}
+.balance-btn{background:var(--accent-glow);border:1px solid rgba(240,180,41,0.4);color:var(--accent);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px;}
+.balance-btn:hover{background:var(--accent);color:#000;}
 
 /* SPORTS TABS */
-.sports-tabs{background:var(--bg2);display:flex;overflow-x:auto;padding:0 8px;gap:4px;border-bottom:1px solid var(--border);scrollbar-width:none;}
+.sports-tabs{background:var(--bg2);display:flex;overflow-x:auto;padding:8px 10px;gap:6px;border-bottom:1px solid var(--border);scrollbar-width:none;}
 .sports-tabs::-webkit-scrollbar{display:none;}
-.sport-tab{display:flex;align-items:center;gap:6px;padding:10px 14px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;}
-.sport-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
-.sport-tab .badge{background:var(--accent);color:#000;font-size:10px;font-weight:700;padding:1px 5px;border-radius:10px;}
+.sport-tab{display:flex;align-items:center;gap:6px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;white-space:nowrap;border-radius:20px;border:1px solid transparent;transition:all 0.2s;}
+.sport-tab:hover{color:var(--text3);background:var(--bg3);}
+.sport-tab.active{color:#000;background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px rgba(240,180,41,0.4);}
+.sport-tab.active .badge{background:rgba(0,0,0,0.25);color:#000;}
+.sport-tab .badge{background:var(--bg3);color:var(--text3);font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;}
 
 /* HERO */
 .hero{background:linear-gradient(135deg,#0a1628 0%,#1a2a4a 50%,#0d1f3c 100%);padding:24px 20px;position:relative;overflow:hidden;}
@@ -65,7 +78,7 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 
 /* SECTIONS */
 .section{padding:16px;}
-.section-title{display:flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;margin-bottom:12px;}
+.section-title{display:flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;letter-spacing:0.5px;}
 .section-title .star{color:var(--accent);}
 .live-dot{width:8px;height:8px;background:var(--live);border-radius:50%;animation:pulse 1.2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
@@ -73,32 +86,32 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 /* MATCH CARDS horizontal */
 .matches-scroll{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;scrollbar-width:none;}
 .matches-scroll::-webkit-scrollbar{display:none;}
-.match-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;min-width:260px;flex-shrink:0;transition:border-color 0.2s;}
-.match-card:hover{border-color:var(--accent);}
+.match-card{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:var(--radius);padding:14px;min-width:265px;flex-shrink:0;transition:all 0.2s;}
+.match-card:hover{border-color:rgba(240,180,41,0.4);box-shadow:0 4px 20px rgba(0,0,0,0.4);}
 .match-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:12px;}
 .match-teams{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px;}
 .team{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;}
-.team-logo{width:38px;height:38px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:20px;}
+.team-logo{width:40px;height:40px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:20px;border:1px solid var(--border2);}
 .team-name{font-size:12px;font-weight:600;text-align:center;line-height:1.2;}
-.vs-text{font-size:11px;color:var(--text2);font-weight:600;flex-shrink:0;}
+.vs-text{font-size:11px;color:var(--text2);font-weight:700;flex-shrink:0;background:var(--bg3);border-radius:6px;padding:4px 6px;}
 .odds-row{display:flex;gap:6px;}
-.odd-btn{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;gap:2px;}
-.odd-btn:hover{border-color:var(--accent);background:rgba(245,166,35,0.08);}
-.odd-btn.selected{background:var(--accent);border-color:var(--accent);}
+.odd-btn{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:9px 4px;text-align:center;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;gap:2px;}
+.odd-btn:hover{border-color:var(--accent);background:var(--accent-glow);}
+.odd-btn.selected{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:var(--accent);box-shadow:0 2px 10px rgba(240,180,41,0.35);}
 .odd-btn.selected .odd-label,.odd-btn.selected .odd-value{color:#000;}
-.odd-label{font-size:10px;color:var(--text2);font-weight:500;}
+.odd-label{font-size:10px;color:var(--text2);font-weight:600;}
 .odd-value{font-size:14px;font-weight:700;color:var(--accent);}
 
 /* TIME FILTERS */
 .time-filters{display:flex;gap:6px;overflow-x:auto;padding:12px 16px;scrollbar-width:none;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .time-filters::-webkit-scrollbar{display:none;}
-.time-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all 0.2s;}
-.time-btn.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700;}
+.time-btn{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all 0.2s;}
+.time-btn.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:800;box-shadow:0 2px 10px rgba(240,180,41,0.3);}
 
 /* MATCH LIST */
 .match-list{padding:12px 16px;display:flex;flex-direction:column;gap:10px;}
-.match-row{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
-.match-row:hover{border-color:rgba(245,166,35,0.4);}
+.match-row{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.2s;}
+.match-row:hover{border-color:rgba(240,180,41,0.3);box-shadow:0 2px 16px rgba(0,0,0,0.3);}
 .match-row-header{padding:10px 14px 6px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text2);}
 .match-row-header .league-name{display:flex;align-items:center;gap:6px;font-weight:500;}
 .match-row-header .match-time{color:var(--accent);font-weight:600;}
@@ -116,51 +129,99 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 .market-odds-row{display:flex;gap:6px;margin-bottom:10px;}
 
 /* BOTTOM NAV */
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:var(--bg2);border-top:1px solid var(--border);display:flex;z-index:100;}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 14px;cursor:pointer;color:var(--text2);font-size:10px;transition:color 0.2s;}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(10,14,24,0.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;z-index:100;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 14px;cursor:pointer;color:var(--text2);font-size:10px;font-weight:500;transition:all 0.2s;}
 .nav-item.active{color:var(--accent);}
+.nav-item.active .nav-icon{text-shadow:0 0 12px rgba(240,180,41,0.5);}
 .nav-item .nav-icon{font-size:20px;}
 
 /* BETSLIP FAB */
-.betslip-fab{position:fixed;bottom:80px;right:16px;background:var(--accent);color:#000;border:none;border-radius:50px;padding:12px 18px;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(245,166,35,0.4);z-index:99;transition:transform 0.2s;}
-.betslip-fab:hover{transform:scale(1.05);}
-.betslip-fab .count{background:#000;color:var(--accent);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.betslip-fab{position:fixed;bottom:80px;right:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;border:none;border-radius:50px;padding:12px 18px;font-weight:800;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(240,180,41,0.5),0 0 0 2px rgba(240,180,41,0.15);z-index:99;transition:transform 0.2s;}
+.betslip-fab:hover{transform:scale(1.06);}
+.betslip-fab .count{background:#000;color:var(--accent);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
 
-/* BETSLIP PANEL */
-.betslip-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:none;align-items:flex-end;}
+/* BETSLIP PANEL — FULL REDESIGN */
+.betslip-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:flex-end;backdrop-filter:blur(4px);}
 .betslip-overlay.open{display:flex;}
-.betslip-panel{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-width:430px;margin:0 auto;padding:0 0 20px;max-height:85vh;overflow-y:auto;animation:slideUp 0.3s ease;}
+.betslip-panel{background:var(--bg2);border-radius:22px 22px 0 0;width:100%;max-width:430px;margin:0 auto;padding:0 0 20px;max-height:90vh;overflow-y:auto;animation:slideUp 0.32s cubic-bezier(0.34,1.1,0.64,1);}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.betslip-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:1;}
-.betslip-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;display:flex;align-items:center;gap:8px;}
-.close-btn{background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+
+/* Betslip drag handle */
+.betslip-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:12px auto 0;}
+
+.betslip-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;border-bottom:1px solid var(--border);}
+.betslip-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:0.5px;}
+.betslip-title .bs-icon{font-size:20px;}
+.close-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text3);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.close-btn:hover{background:var(--red-glow);border-color:var(--red);color:var(--red);}
+
+/* Mode tabs: Single / Combo */
+.betslip-mode-tabs{display:flex;margin:12px 16px;background:var(--bg3);border-radius:10px;padding:4px;gap:4px;border:1px solid var(--border);}
+.bs-mode-tab{flex:1;text-align:center;padding:8px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;color:var(--text2);transition:all 0.2s;letter-spacing:0.3px;}
+.bs-mode-tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 2px 8px rgba(240,180,41,0.35);}
+
 .betslip-empty{text-align:center;padding:40px 20px;color:var(--text2);}
-.betslip-item{margin:12px 16px 0;background:var(--card);border-radius:10px;padding:12px 14px;border-left:3px solid var(--accent);position:relative;}
-.betslip-item-match{font-size:11px;color:var(--text2);margin-bottom:4px;}
-.betslip-item-selection{font-size:14px;font-weight:600;}
-.betslip-item-odd{color:var(--accent);font-weight:700;}
-.remove-bet{position:absolute;top:8px;right:8px;background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:16px;padding:2px 6px;}
-.betslip-footer{padding:16px;border-top:1px solid var(--border);margin-top:16px;}
-.stake-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.stake-label{font-size:13px;color:var(--text2);flex:0 0 70px;}
-.stake-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:10px 14px;font-size:16px;font-weight:600;outline:none;font-family:'Roboto',sans-serif;}
-.stake-input:focus{border-color:var(--accent);}
-.quick-stakes{display:flex;gap:6px;margin-bottom:14px;}
-.quick-stake{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text2);padding:7px 4px;font-size:12px;cursor:pointer;text-align:center;transition:all 0.15s;}
-.quick-stake:hover{border-color:var(--accent);color:var(--accent);}
-.potential-win{display:flex;justify-content:space-between;align-items:center;background:rgba(0,200,83,0.08);border:1px solid rgba(0,200,83,0.2);border-radius:8px;padding:12px 14px;margin-bottom:14px;}
-.potential-win .label{font-size:13px;color:var(--text2);}
-.potential-win .amount{font-size:18px;font-weight:700;color:var(--green);font-family:'Oswald',sans-serif;}
-.place-bet-btn{width:100%;background:var(--accent);color:#000;border:none;border-radius:10px;padding:15px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;transition:background 0.2s;}
-.place-bet-btn:hover{background:var(--accent2);}
-.place-bet-btn:disabled{background:var(--border);color:var(--text2);cursor:not-allowed;}
+.betslip-empty .bs-empty-icon{font-size:52px;margin-bottom:12px;opacity:0.5;}
+
+/* Betslip items */
+.betslip-item{margin:10px 16px 0;background:var(--card);border-radius:12px;padding:12px 14px;border-left:3px solid var(--accent);position:relative;border:1px solid var(--border2);border-left:3px solid var(--accent);}
+.betslip-item-league{font-size:10px;color:var(--text2);font-weight:600;letter-spacing:0.5px;margin-bottom:3px;text-transform:uppercase;}
+.betslip-item-match{font-size:12px;color:var(--text3);margin-bottom:5px;}
+.betslip-item-selection{font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+.betslip-item-odd{color:var(--accent);font-weight:800;font-size:15px;font-family:'Oswald',sans-serif;}
+.betslip-item-market{font-size:10px;color:var(--text2);font-weight:600;margin-top:3px;background:var(--bg3);display:inline-block;padding:2px 7px;border-radius:4px;}
+.remove-bet{position:absolute;top:8px;right:8px;background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:14px;padding:3px 6px;border-radius:6px;transition:all 0.2s;}
+.remove-bet:hover{background:var(--red-glow);color:var(--red);}
+
+/* Combo total odds badge */
+.combo-total-odds{display:flex;justify-content:space-between;align-items:center;margin:12px 16px 0;background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.05));border:1px solid rgba(240,180,41,0.25);border-radius:10px;padding:10px 14px;}
+.combo-total-odds .label{font-size:12px;color:var(--text2);font-weight:600;}
+.combo-total-odds .value{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--accent);}
+
+/* Betslip footer */
+.betslip-footer{padding:14px 16px 0;margin-top:12px;}
+
+/* Stake input redesigned */
+.stake-section{background:var(--card);border-radius:12px;padding:14px;border:1px solid var(--border2);margin-bottom:12px;}
+.stake-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.stake-label{font-size:12px;color:var(--text2);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;}
+.stake-balance{font-size:11px;color:var(--text3);}
+.stake-balance span{color:var(--green);font-weight:700;}
+.stake-input-wrap{display:flex;align-items:center;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color 0.2s;}
+.stake-input-wrap:focus-within{border-color:var(--accent);}
+.stake-currency{padding:11px 12px;font-size:13px;font-weight:700;color:var(--text3);border-right:1px solid var(--border2);background:var(--bg);}
+.stake-input{flex:1;background:transparent;border:none;color:var(--text);padding:11px 14px;font-size:18px;font-weight:700;outline:none;font-family:'Oswald',sans-serif;}
+.stake-input::placeholder{color:var(--text2);font-size:15px;}
+.stake-clear{padding:0 12px;color:var(--text2);cursor:pointer;font-size:18px;transition:color 0.2s;}
+.stake-clear:hover{color:var(--red);}
+
+/* Quick stakes pill row */
+.quick-stakes{display:flex;gap:6px;margin-top:10px;}
+.quick-stake{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;color:var(--text3);padding:7px 4px;font-size:12px;font-weight:700;cursor:pointer;text-align:center;transition:all 0.18s;}
+.quick-stake:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow);}
+
+/* Payout breakdown card */
+.payout-card{background:var(--card);border-radius:12px;padding:14px;border:1px solid var(--border2);margin-bottom:12px;}
+.payout-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);}
+.payout-row:last-child{border-bottom:none;padding-top:8px;margin-top:2px;}
+.payout-row .pl{color:var(--text2);}
+.payout-row .pv{font-weight:700;color:var(--text);}
+.payout-row.total-row .pl{font-size:14px;font-weight:700;color:var(--text);}
+.payout-row.total-row .pv{font-family:'Oswald',sans-serif;font-size:20px;color:var(--green);text-shadow:0 0 12px rgba(16,212,138,0.3);}
+.tax-note{font-size:10px;color:var(--text2);margin-top:6px;text-align:center;}
+
+/* Place bet button */
+.place-bet-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1.5px;transition:all 0.2s;box-shadow:0 4px 18px rgba(240,180,41,0.35);}
+.place-bet-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(240,180,41,0.45);}
+.place-bet-btn:disabled{background:var(--bg3);color:var(--text2);cursor:not-allowed;box-shadow:none;transform:none;}
+.place-bet-btn:active{transform:scale(0.99);}
 
 /* PAGE OVERLAYS */
-.page-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:none;align-items:flex-end;}
+.page-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:200;display:none;align-items:flex-end;backdrop-filter:blur(4px);}
 .page-overlay.open{display:flex;}
-.page-panel{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-width:430px;margin:0 auto;max-height:88vh;overflow-y:auto;animation:slideUp 0.3s ease;}
+.page-panel{background:var(--bg2);border-radius:22px 22px 0 0;width:100%;max-width:430px;margin:0 auto;max-height:88vh;overflow-y:auto;animation:slideUp 0.32s cubic-bezier(0.34,1.1,0.64,1);}
 .page-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:1;}
-.page-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;}
+.page-title{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.5px;}
 .page-body{padding:20px;padding-bottom:40px;}
 
 /* GAMES GRID */
@@ -173,18 +234,19 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 .game-card .game-badge.hot{background:var(--accent);color:#000;}
 
 /* WALLET / PROFILE */
-.wallet-balance-card{background:linear-gradient(135deg,#1a2a4a,#0d1f3c);border:1px solid var(--accent);border-radius:14px;padding:20px;margin-bottom:16px;}
+.wallet-balance-card{background:linear-gradient(135deg,#0e1c30,#152540,#0a1525);border:1px solid rgba(240,180,41,0.3);border-radius:var(--radius);padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
+.wallet-balance-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(240,180,41,0.12),transparent 70%);border-radius:50%;}
 .tx-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px;}
 .profile-stat-row{display:flex;gap:10px;margin-bottom:24px;}
-.profile-stat{flex:1;background:var(--card);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);}
-.profile-menu-item{padding:16px 0;border-bottom:1px solid var(--border);font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:color 0.2s;}
-.profile-menu-item:hover{color:var(--accent);}
-.referral-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;}
+.profile-stat{flex:1;background:var(--card);border-radius:12px;padding:14px;text-align:center;border:1px solid var(--border2);}
+.profile-menu-item{padding:16px 0;border-bottom:1px solid var(--border);font-size:14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all 0.2s;}
+.profile-menu-item:hover{color:var(--accent);padding-left:4px;}
+.referral-box{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius);padding:16px;margin-bottom:16px;}
 
 /* TOAST */
-.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--green);color:#000;padding:10px 20px;border-radius:8px;font-weight:600;font-size:13px;z-index:300;opacity:0;transition:all 0.3s;pointer-events:none;white-space:nowrap;}
+.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--green);color:#000;padding:11px 22px;border-radius:24px;font-weight:700;font-size:13px;z-index:400;opacity:0;transition:all 0.3s cubic-bezier(0.34,1.3,0.64,1);pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(16,212,138,0.35);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast.error{background:var(--red);color:#fff;}
+.toast.error{background:var(--red);color:#fff;box-shadow:0 4px 20px rgba(244,63,94,0.35);}
 .content-area{padding-bottom:80px;}
 
 /* ================================================================
@@ -353,10 +415,14 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="logo"><span class="h">HABESHA</span> <span>BET</span></div>
+  <div class="logo"><span class="h">Quick</span><span style="color:#fff;"> Birr</span><span style="color:var(--accent);font-size:14px;">⚡</span></div>
   <div class="topbar-right">
-    <button class="search-btn" onclick="openSearch()">🔍 Search</button>
-    <button class="balance-btn" id="balanceDisplay" onclick="showPage('wallet')">💰 ETB 50.00</button>
+    <button class="search-btn" onclick="openSearch()">🔍</button>
+    <div id="authButtons">
+      <button onclick="showAuthModal('register')" style="background:transparent;border:1.5px solid var(--accent);color:var(--accent);padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;margin-right:4px;">Register</button>
+      <button onclick="showAuthModal('login')" style="background:var(--accent);border:none;color:#000;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;">Login</button>
+    </div>
+    <button class="balance-btn" id="balanceDisplay" onclick="showPage('wallet')" style="display:none;">💰 ETB 50.00</button>
   </div>
 </div>
 
@@ -374,12 +440,129 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 
 <div class="content-area">
 
-<!-- HERO -->
-<div class="hero">
-  <h1>Win <span class="y">BIG</span> Today 🔥</h1>
-  <p>30+ matches live. Place your bets now!</p>
-  <button class="hero-btn" onclick="showPage('wallet')">💳 Deposit Now</button>
+<!-- HERO CAROUSEL -->
+<div style="position:relative;overflow:hidden;min-height:172px;" id="heroBanner">
+  <div id="heroTrack" style="display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);will-change:transform;">
+
+    <!-- Slide 1: 100% Deposit Bonus -->
+    <div class="hslide" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 45%,#0d1f3c 100%);display:flex;align-items:center;opacity:1;z-index:2;transition:opacity 0.6s ease;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(245,166,35,0.25) 0%,transparent 60%);"></div>
+      <div style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:90px;opacity:0.12;animation:spinBall 8s linear infinite;">⚽</div>
+      <div style="position:absolute;right:-20px;top:-20px;width:130px;height:130px;border-radius:50%;border:2px solid rgba(245,166,35,0.18);animation:pulsRing 2.5s ease-in-out infinite;"></div>
+      <div style="position:absolute;right:15px;top:15px;width:75px;height:75px;border-radius:50%;border:2px solid rgba(245,166,35,0.12);animation:pulsRing 2.5s ease-in-out infinite 0.5s;"></div>
+      <div style="position:relative;z-index:1;padding:20px;">
+        <div style="background:var(--accent);color:#000;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:1px;">🎁 NEW MEMBER BONUS</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#fff;margin-bottom:4px;">100% <span style="color:var(--accent);">DEPOSIT</span></div>
+        <div style="font-family:'Oswald',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#fff;margin-bottom:8px;">BONUS ⚡</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:14px;">ለመጀመርያ deposit ድርብ ያድርግልሃል!</div>
+        <button onclick="showPage('wallet')" style="background:linear-gradient(135deg,var(--accent),#e8941a);color:#000;border:none;padding:10px 22px;border-radius:20px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;">💳 DEPOSIT NOW →</button>
+      </div>
+    </div>
+
+    <!-- Slide 2: እስከ 500,000 ብር ያሸንፉ -->
+    <div class="hslide" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a1a00 0%,#0d2e00 45%,#1a3d00 100%);display:flex;align-items:center;opacity:0;z-index:1;transition:opacity 0.6s ease;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(0,200,83,0.22) 0%,transparent 65%);"></div>
+      <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:88px;opacity:0.13;animation:floatUp 3s ease-in-out infinite;">🏆</div>
+      <div style="position:absolute;right:-15px;top:-15px;width:140px;height:140px;border-radius:50%;border:2px solid rgba(0,200,83,0.2);animation:pulsRing 3s ease-in-out infinite;"></div>
+      <div style="position:relative;z-index:1;padding:20px;">
+        <div style="background:#00c853;color:#000;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:1px;">💰 BIG WIN JACKPOT</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);margin-bottom:2px;">እየተዝናኑ</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:900;line-height:1;color:#fff;margin-bottom:2px;">እስከ <span id="jackpotCount" style="color:#00c853;">500,000</span></div>
+        <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:900;line-height:1;color:#fff;margin-bottom:8px;">ብር <span style="color:#00c853;">ያሸንፉ!</span> 🎉</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:14px;">Aviator · Keno · Sports ላይ በቀን</div>
+        <button onclick="showPage('games')" style="background:linear-gradient(135deg,#00c853,#00a844);color:#000;border:none;padding:10px 22px;border-radius:20px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;">🎮 አሁን ተጫወት →</button>
+      </div>
+    </div>
+
+    <!-- Slide 3: UCL Final Special Odds -->
+    <div class="hslide" style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0014 0%,#1a003a 45%,#0d0028 100%);display:flex;align-items:center;opacity:0;z-index:1;transition:opacity 0.6s ease;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(124,58,237,0.3) 0%,transparent 65%);"></div>
+      <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:85px;opacity:0.15;animation:floatUp 3.5s ease-in-out infinite;">🏆</div>
+      <div style="position:relative;z-index:1;padding:20px;">
+        <div style="background:linear-gradient(90deg,#7c3aed,#a855f7);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:1px;">⚽ UCL FINAL — ዛሬ ማታ!</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:24px;font-weight:900;line-height:1.1;color:#fff;margin-bottom:4px;">🔵 PSG <span style="color:rgba(255,255,255,0.4);font-size:18px;">vs</span> Arsenal 🔴</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:10px;">Budapest · 19:00 EAT</div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(124,58,237,0.5);border-radius:8px;padding:7px 12px;text-align:center;">
+            <div style="font-size:9px;color:rgba(255,255,255,0.5);">PSG</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:#a855f7;">2.10</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(124,58,237,0.5);border-radius:8px;padding:7px 12px;text-align:center;">
+            <div style="font-size:9px;color:rgba(255,255,255,0.5);">Draw</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:#a855f7;">3.30</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(124,58,237,0.5);border-radius:8px;padding:7px 12px;text-align:center;">
+            <div style="font-size:9px;color:rgba(255,255,255,0.5);">Arsenal</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:#a855f7;">3.20</div>
+          </div>
+        </div>
+        <button onclick="document.querySelector('.match-list').scrollIntoView({behavior:'smooth'})" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;padding:9px 20px;border-radius:20px;font-weight:800;font-size:12px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;">🎯 ትንበያ ያስቀምጡ →</button>
+      </div>
+    </div>
+
+    <!-- Slide 4: Refer & Earn -->
+    <div class="hslide" style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0800 0%,#3d1500 45%,#1a0a00 100%);display:flex;align-items:center;opacity:0;z-index:1;transition:opacity 0.6s ease;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(255,100,0,0.22) 0%,transparent 65%);"></div>
+      <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:85px;opacity:0.13;animation:floatUp 4s ease-in-out infinite;">👥</div>
+      <div style="position:relative;z-index:1;padding:20px;">
+        <div style="background:linear-gradient(90deg,#ff6400,#ff8c00);color:#000;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:1px;">🤝 REFER & EARN</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:28px;font-weight:900;line-height:1.1;color:#fff;margin-bottom:4px;">ጓደኛ <span style="color:#ff6400;">ጋብዝ</span></div>
+        <div style="font-family:'Oswald',sans-serif;font-size:28px;font-weight:900;line-height:1.1;color:#fff;margin-bottom:8px;"><span style="color:#ff6400;">ETB 50</span> አግኝ! 🎁</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:14px;">ጓደኛህ ሲመዘገብ ሁለቱም ይጠቀማሉ</div>
+        <button onclick="showPage('invite')" style="background:linear-gradient(135deg,#ff6400,#ff8c00);color:#000;border:none;padding:10px 22px;border-radius:20px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;">👫 አሁን ጋብዝ →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dots indicator -->
+  <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:10;" id="heroDots">
+    <div onclick="goSlide(0)" style="width:20px;height:4px;border-radius:2px;background:#00c853;cursor:pointer;transition:all 0.3s;" class="hdot"></div>
+    <div onclick="goSlide(1)" style="width:6px;height:4px;border-radius:2px;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s;" class="hdot"></div>
+    <div onclick="goSlide(2)" style="width:6px;height:4px;border-radius:2px;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s;" class="hdot"></div>
+    <div onclick="goSlide(3)" style="width:6px;height:4px;border-radius:2px;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s;" class="hdot"></div>
+  </div>
 </div>
+
+<style>
+@keyframes spinBall{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
+@keyframes pulsRing{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes floatUp{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-58%)}}
+</style>
+
+<script>
+let heroIdx = 0;
+const heroTotal = 4;
+function goSlide(n) {
+  heroIdx = n;
+  document.querySelectorAll('.hslide').forEach(function(s,i){
+    s.style.opacity = i===n ? '1' : '0';
+    s.style.zIndex  = i===n ? '2' : '1';
+  });
+  document.querySelectorAll('.hdot').forEach(function(d,i){
+    d.style.width = i===n ? '20px' : '6px';
+    d.style.background = i===n ? '#00c853' : 'rgba(255,255,255,0.3)';
+  });
+}
+function nextSlide() { goSlide((heroIdx + 1) % heroTotal); }
+let heroTimer = setInterval(nextSlide, 4000);
+document.getElementById('heroBanner').addEventListener('touchstart', e => { heroTimer && clearInterval(heroTimer); }, {passive:true});
+document.getElementById('heroBanner').addEventListener('touchend', e => { heroTimer = setInterval(nextSlide, 4000); }, {passive:true});
+
+// Jackpot counter animation
+function animateJackpot() {
+  const el = document.getElementById('jackpotCount');
+  if (!el) return;
+  let val = 480000 + Math.floor(Math.random() * 15000);
+  setInterval(() => {
+    val += Math.floor(Math.random() * 500) - 100;
+    if (val < 450000) val = 450000;
+    if (val > 550000) val = 500000;
+    el.textContent = val.toLocaleString();
+  }, 1800);
+}
+animateJackpot();
+</script>
 
 <!-- TIME FILTERS -->
 <div class="time-filters">
@@ -394,40 +577,89 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 </div>
 
 <!-- MATCH LIST -->
-<div class="section"><div class="section-title">📅 May 30, 2026 — Today's Matches</div></div>
+<div class="section"><div class="section-title" id="matchSectionTitle">📅 ጨዋታዎች በመጫን ላይ...</div></div>
 <div class="match-list" id="matchList"></div>
 
 </div><!-- end content-area -->
 
 <!-- BETSLIP FAB -->
 <button class="betslip-fab" id="betslipFab" onclick="openBetslip()" style="display:none;">
-  🎫 Betslip <span class="count" id="betCount">0</span>
+  🎯 Betslip <span class="count" id="betCount">0</span>
 </button>
 
 <!-- BETSLIP -->
 <div class="betslip-overlay" id="betslipOverlay" onclick="closeBetslipOutside(event)">
   <div class="betslip-panel">
+    <div class="betslip-handle"></div>
     <div class="betslip-header">
-      <div class="betslip-title">🎫 Betslip <span id="betslipCount" style="font-size:14px;color:var(--accent)"></span></div>
+      <div class="betslip-title"><span class="bs-icon">🎯</span> BETSLIP <span id="betslipCount" style="color:var(--accent);font-size:14px;font-weight:700;"></span></div>
       <button class="close-btn" onclick="closeBetslip()">✕</button>
     </div>
-    <div id="betslipContent"><div class="betslip-empty"><div style="font-size:48px">🎯</div><div>Select odds to add bets</div></div></div>
+
+    <!-- Single / Combo mode tabs -->
+    <div class="betslip-mode-tabs" id="bsModeTabsWrap" style="display:none;">
+      <div class="bs-mode-tab active" id="bsTabSingle" onclick="setBsMode('single')">⚽ Single</div>
+      <div class="bs-mode-tab" id="bsTabCombo" onclick="setBsMode('combo')">🔗 Combo</div>
+    </div>
+
+    <div id="betslipContent">
+      <div class="betslip-empty">
+        <div class="bs-empty-icon">🎯</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:6px;color:var(--text);">Betslip ባዶ ነው</div>
+        <div style="font-size:13px;color:var(--text2);">Odds ጠቅ አድርግ ለመጨመር</div>
+      </div>
+    </div>
+
+    <!-- Combo total odds bar -->
+    <div class="combo-total-odds" id="comboTotalOddsBar" style="display:none;">
+      <div>
+        <div class="label">🔗 Combined Odds</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px;" id="comboLegsLabel"></div>
+      </div>
+      <div class="value" id="comboTotalOddsVal">1.00</div>
+    </div>
+
     <div class="betslip-footer" id="betslipFooter" style="display:none;">
-      <div class="stake-row">
-        <div class="stake-label">Stake ETB</div>
-        <input class="stake-input" type="number" id="stakeInput" placeholder="0.00" min="1" oninput="updatePotential()">
+      <div class="stake-section">
+        <div class="stake-top-row">
+          <div class="stake-label">💰 STAKE (ETB)</div>
+          <div class="stake-balance">Balance: <span id="bsBalanceDisplay">0.00</span></div>
+        </div>
+        <div class="stake-input-wrap">
+          <div class="stake-currency">ETB</div>
+          <input class="stake-input" type="number" id="stakeInput" placeholder="0.00" oninput="updatePotential()" min="1">
+          <div class="stake-clear" onclick="document.getElementById('stakeInput').value='';updatePotential()">⌫</div>
+        </div>
+        <div class="quick-stakes">
+          <div class="quick-stake" onclick="setStake(20)">+20</div>
+          <div class="quick-stake" onclick="setStake(50)">+50</div>
+          <div class="quick-stake" onclick="setStake(100)">+100</div>
+          <div class="quick-stake" onclick="setStake(200)">+200</div>
+          <div class="quick-stake" onclick="setStake(500)">+500</div>
+        </div>
       </div>
-      <div class="quick-stakes">
-        <div class="quick-stake" onclick="setStake(10)">+10</div>
-        <div class="quick-stake" onclick="setStake(50)">+50</div>
-        <div class="quick-stake" onclick="setStake(100)">+100</div>
-        <div class="quick-stake" onclick="setStake(500)">+500</div>
+
+      <div class="payout-card">
+        <div class="payout-row">
+          <span class="pl">Total Odds</span>
+          <span class="pv" id="bsTotalOdds">1.00</span>
+        </div>
+        <div class="payout-row">
+          <span class="pl">Gross Win</span>
+          <span class="pv" id="bsGrossWin">ETB 0.00</span>
+        </div>
+        <div class="payout-row">
+          <span class="pl">Tax (15%)</span>
+          <span class="pv" style="color:var(--red);" id="bsTaxAmount">- ETB 0.00</span>
+        </div>
+        <div class="payout-row total-row">
+          <span class="pl">🏆 Net Payout</span>
+          <span class="pv" id="potentialWin">ETB 0.00</span>
+        </div>
+        <div class="tax-note">* 15% tax on winnings — Ethiopian regulations</div>
       </div>
-      <div class="potential-win">
-        <div class="label">Potential Win</div>
-        <div class="amount" id="potentialWin">ETB 0.00</div>
-      </div>
-      <button class="place-bet-btn" id="placeBetBtn" onclick="placeBet()" disabled>PLACE BET</button>
+
+      <button class="place-bet-btn" id="placeBetBtn" onclick="placeBet()" disabled>PLACE BET →</button>
     </div>
   </div>
 </div>
@@ -575,14 +807,15 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
       <div class="referral-box">
         <div style="font-size:11px;color:var(--text2);margin-bottom:6px;">Your Referral Code</div>
         <div style="display:flex;gap:8px;align-items:center;">
-          <div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:18px;font-weight:700;letter-spacing:2px;color:var(--accent);">HABESHA25</div>
+          <div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:18px;font-weight:700;letter-spacing:2px;color:var(--accent);" id="myRefCode">HABESHA25</div>
           <button onclick="copyCode()" style="background:var(--accent);border:none;color:#000;padding:12px 16px;border-radius:8px;font-weight:700;cursor:pointer;">Copy</button>
         </div>
       </div>
       <div style="margin-top:20px;">
-        <div style="font-size:13px;color:var(--text2);margin-bottom:10px;">Friends Invited: <strong style="color:var(--text)">3</strong></div>
-        <div style="font-size:13px;color:var(--text2);">Total Earned: <strong style="color:var(--green)">ETB 1,500</strong></div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:10px;">Friends Invited: <strong style="color:var(--text);" id="inviteCount">0</strong></div>
+        <div style="font-size:13px;color:var(--text2);">Total Earned: <strong style="color:var(--green);" id="inviteEarned">ETB 0</strong></div>
       </div>
+      <div id="inviteList" style="margin-top:16px;"></div>
     </div>
   </div>
 </div>
@@ -601,7 +834,7 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
       </div>
       <div style="display:flex;gap:10px;margin-bottom:20px;">
         <button onclick="openDepositModal()" style="flex:1;background:var(--green);border:none;color:#000;padding:14px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">💳 Deposit</button>
-        <button onclick="showToast('✅ Withdrawal request sent!')" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">🏧 Withdraw</button>
+        <button onclick="openWithdrawModal()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">🏧 Withdraw</button>
       </div>
       <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Recent Transactions</div>
       <div class="tx-item"><span>✅ Deposit</span><span style="color:var(--green)">+ETB 50</span></div>
@@ -619,47 +852,8 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
       <div class="page-title">👤 Profile</div>
       <button class="close-btn" onclick="closePage('profile')">✕</button>
     </div>
-    <div class="page-body">
-      <!-- Avatar with letter -->
-      <div style="text-align:center;margin-bottom:24px;">
-        <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:#000;border:3px solid var(--accent);box-shadow:0 0 20px rgba(245,166,35,0.3);">Y</div>
-        <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;">Yonas Tadesse</div>
-        <div style="font-size:12px;color:var(--text2);margin-top:4px;">Member since Jan 2024</div>
-      </div>
-      <!-- Balance + Deposit -->
-      <div style="background:linear-gradient(135deg,#1a2a4a,#0d1f3c);border:1px solid var(--accent);border-radius:14px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-size:11px;color:var(--text2);">Balance</div>
-          <div style="font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;color:var(--accent);" id="profileBalance">ETB 50.00</div>
-        </div>
-        <button onclick="openDepositModal()" style="background:var(--accent);border:none;color:#000;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;">💳 Deposit</button>
-      </div>
-      <!-- Stats -->
-      <div class="profile-stat-row">
-        <div class="profile-stat"><div style="font-size:20px;font-weight:700;color:var(--accent)">47</div><div style="font-size:11px;color:var(--text2)">Total Bets</div></div>
-        <div class="profile-stat"><div style="font-size:20px;font-weight:700;color:var(--green)">28</div><div style="font-size:11px;color:var(--text2)">Won</div></div>
-        <div class="profile-stat"><div style="font-size:20px;font-weight:700;color:var(--red)">19</div><div style="font-size:11px;color:var(--text2)">Lost</div></div>
-      </div>
-      <!-- Account Details section -->
-      <div style="font-family:'Oswald',sans-serif;font-size:14px;color:var(--text2);margin-bottom:12px;letter-spacing:0.5px;">ACCOUNT DETAILS</div>
-      <div style="background:var(--card);border-radius:12px;padding:4px 0;border:1px solid var(--border);margin-bottom:20px;">
-        <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;">
-          <span style="color:var(--text2);">Phone</span><span style="font-weight:600;">+251 911 234 567</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;">
-          <span style="color:var(--text2);">Username</span><span style="font-weight:600;">yonas_t</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:12px 16px;font-size:13px;">
-          <span style="color:var(--text2);">Member ID</span><span style="font-weight:600;color:var(--accent);">#HB-20240112</span>
-        </div>
-      </div>
-      <!-- Quick Actions -->
-      <div style="font-family:'Oswald',sans-serif;font-size:14px;color:var(--text2);margin-bottom:12px;letter-spacing:0.5px;">QUICK ACTIONS</div>
-      <div class="profile-menu-item" onclick="showToast('⚙️ Settings coming soon')">⚙️ Settings</div>
-      <div class="profile-menu-item" onclick="showPage('invite')">🎁 Invite Friends — Earn ETB 500</div>
-      <div class="profile-menu-item" onclick="showToast('📞 Support: +251 911 000 000')">📞 Support</div>
-      <div class="profile-menu-item" onclick="showToast('📜 Terms of Service')">📜 Terms & Conditions</div>
-      <div class="profile-menu-item" style="color:var(--red)" onclick="showToast('👋 Logged out!')">🚪 Logout</div>
+    <div class="page-body" id="profilePageBody">
+      <!-- Filled dynamically by renderProfilePage() -->
     </div>
   </div>
 </div>
@@ -803,87 +997,247 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;max-
 
 <!-- DEPOSIT MODAL -->
 <div class="page-overlay" id="page-deposit" onclick="closeDepositOutside(event)">
-  <div class="page-panel" style="border-radius:20px 20px 0 0;">
+  <div class="page-panel" style="border-radius:22px 22px 0 0;">
     <div class="page-header">
       <div class="page-title">💳 Deposit</div>
       <button class="close-btn" onclick="closePage('deposit')">✕</button>
     </div>
     <div class="page-body" id="depositBody">
+      <!-- STEP 1: Choose method -->
       <div id="depositStep1">
-        <div style="font-size:13px;color:var(--text2);margin-bottom:16px;">Choose payment method:</div>
-        <div onclick="selectDepositMethod('telebirr')" style="background:var(--card);border:2px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#f5a623'" onmouseout="this.style.borderColor='var(--border)'">
-          <div style="width:48px;height:48px;background:linear-gradient(135deg,#e8007d,#ff4db8);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">📱</div>
-          <div><div style="font-weight:700;font-size:15px;">Telebirr</div><div style="font-size:12px;color:var(--text2);">Ethiopia's #1 mobile wallet</div></div>
-          <div style="margin-left:auto;color:var(--accent);font-size:18px;">›</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:18px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Payment Method ምረጥ</div>
+
+        <!-- Telebirr — active -->
+        <div onclick="selectDepositMethod('telebirr')" style="background:linear-gradient(135deg,rgba(232,0,125,0.12),rgba(255,77,184,0.05));border:2px solid rgba(255,77,184,0.4);border-radius:14px;padding:16px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='#ff4db8'" onmouseout="this.style.borderColor='rgba(255,77,184,0.4)'">
+          <div style="position:absolute;top:8px;right:10px;background:#ff4db8;color:#000;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;">ACTIVE</div>
+          <div style="width:52px;height:52px;background:linear-gradient(135deg,#e8007d,#ff4db8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;box-shadow:0 4px 12px rgba(232,0,125,0.35);">📱</div>
+          <div>
+            <div style="font-weight:800;font-size:15px;color:#fff;">Telebirr</div>
+            <div style="font-size:12px;color:#ff8ad4;margin-top:2px;">Ethiopia's #1 mobile wallet</div>
+            <div style="font-size:11px;color:var(--text2);margin-top:3px;">ወዲያው ይጨምራል ✓</div>
+          </div>
+          <div style="margin-left:auto;color:#ff4db8;font-size:20px;font-weight:700;">›</div>
         </div>
-        <div onclick="showToast('CBE Birr coming soon!')" style="background:var(--card);border:2px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:14px;opacity:0.6;">
-          <div style="width:48px;height:48px;background:linear-gradient(135deg,#0066cc,#004499);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">🏦</div>
-          <div><div style="font-weight:700;font-size:15px;">CBE Birr</div><div style="font-size:12px;color:var(--text2);">Coming soon</div></div>
-        </div>
-        <div onclick="showToast('Bank transfer coming soon!')" style="background:var(--card);border:2px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;display:flex;align-items:center;gap:14px;opacity:0.6;">
-          <div style="width:48px;height:48px;background:linear-gradient(135deg,#2d5a27,#1a3a16);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">💵</div>
-          <div><div style="font-weight:700;font-size:15px;">Bank Transfer</div><div style="font-size:12px;color:var(--text2);">Coming soon</div></div>
-        </div>
-      </div>
-      <div id="depositStep2" style="display:none;">
-        <div style="text-align:center;margin-bottom:20px;">
-          <div style="width:72px;height:72px;background:linear-gradient(135deg,#e8007d,#ff4db8);border-radius:18px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px;">📱</div>
-          <div style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:#ff4db8;">TELEBIRR</div>
-          <div style="font-size:12px;color:var(--text2);margin-top:4px;">Send payment to the number below</div>
-        </div>
-        <div style="background:var(--bg3);border:2px solid #ff4db8;border-radius:12px;padding:16px;margin-bottom:16px;text-align:center;">
-          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;letter-spacing:1px;">TELEBIRR NUMBER</div>
-          <div style="font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#ff4db8;letter-spacing:2px;">0979 508 190</div>
-          <div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--text);">Mhret</div>
-          <button onclick="copyTelebirrNum()" style="margin-top:10px;background:#ff4db8;color:#000;border:none;border-radius:6px;padding:7px 18px;font-weight:700;font-size:12px;cursor:pointer;">📋 Copy Number</button>
-        </div>
-        <div style="margin-bottom:14px;">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:6px;">Amount to Deposit (ETB)</div>
-          <input type="number" id="depositAmount" placeholder="Enter amount..." min="1" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px 14px;font-size:16px;font-weight:700;outline:none;" oninput="this.style.borderColor='var(--accent)'">
-          <div style="display:flex;gap:6px;margin-top:8px;">
-            <div onclick="document.getElementById('depositAmount').value=50" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">50</div>
-            <div onclick="document.getElementById('depositAmount').value=100" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">100</div>
-            <div onclick="document.getElementById('depositAmount').value=200" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">200</div>
-            <div onclick="document.getElementById('depositAmount').value=500" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);">500</div>
+
+        <!-- CBE Birr — coming soon -->
+        <div onclick="openDepositModal_CBE()" style="background:var(--card);border:2px solid var(--border2);border-radius:14px;padding:16px;margin-bottom:12px;cursor:pointer;display:flex;align-items:center;gap:14px;opacity:0.7;position:relative;">
+          <div style="position:absolute;top:8px;right:10px;background:var(--bg3);color:var(--text2);font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border2);">SOON</div>
+          <div style="width:52px;height:52px;background:linear-gradient(135deg,#0066cc,#004499);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🏦</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;">CBE Birr</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:2px;">Commercial Bank of Ethiopia</div>
           </div>
         </div>
-        <div style="margin-bottom:14px;">
-          <div style="font-size:12px;color:var(--text2);margin-bottom:6px;">Telebirr Transaction ID <span style="color:#ef4444;">*</span></div>
-          <input type="text" id="depositTxId" placeholder="e.g. TB2024XXXXXXX" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px 14px;font-size:15px;font-weight:600;outline:none;" oninput="this.style.borderColor='var(--accent)'">
-          <div style="font-size:11px;color:var(--text2);margin-top:5px;">💡 Telebirr ከፍተህ ከፍለህ ከተጨረሰ በኋላ Transaction ID ይሰጥሃል</div>
+
+        <!-- Bank Transfer — coming soon -->
+        <div style="background:var(--card);border:2px solid var(--border2);border-radius:14px;padding:16px;cursor:pointer;display:flex;align-items:center;gap:14px;opacity:0.5;position:relative;">
+          <div style="position:absolute;top:8px;right:10px;background:var(--bg3);color:var(--text2);font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border2);">SOON</div>
+          <div style="width:52px;height:52px;background:linear-gradient(135deg,#2d5a27,#1a3a16);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🏛️</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;">Bank Transfer</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:2px;">Direct bank deposit</div>
+          </div>
         </div>
-        <div style="background:rgba(255,77,184,0.08);border:1px solid rgba(255,77,184,0.25);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.6;">
-          ⚠️ Transaction ID አስገብተህ ከዚህ በኋላ ጫን። Balance ወዲያው ይጨምራል።
+      </div>
+
+      <!-- STEP 2: Telebirr payment details -->
+      <div id="depositStep2" style="display:none;">
+        <!-- Telebirr number card -->
+        <div style="background:linear-gradient(135deg,rgba(232,0,125,0.15),rgba(255,77,184,0.05));border:2px solid rgba(255,77,184,0.35);border-radius:16px;padding:20px;margin-bottom:18px;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(255,77,184,0.15),transparent 70%);border-radius:50%;"></div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#e8007d,#ff4db8);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">📱</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:#ff4db8;letter-spacing:2px;">TELEBIRR</div>
+          </div>
+          <div style="font-size:11px;color:var(--text2);letter-spacing:1.5px;margin-bottom:6px;text-transform:uppercase;">ወደ ይህ ቁጥር ልክ</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:800;color:#fff;letter-spacing:3px;margin-bottom:4px;">0979 508 190</div>
+          <div style="font-size:13px;color:#ff8ad4;font-weight:600;margin-bottom:12px;">Mhret</div>
+          <button onclick="copyTelebirrNum()" style="background:linear-gradient(135deg,#e8007d,#ff4db8);color:#000;border:none;border-radius:20px;padding:8px 22px;font-weight:800;font-size:12px;cursor:pointer;letter-spacing:0.5px;">📋 ቁጥር ቅዳ</button>
         </div>
-        <button onclick="confirmDeposit()" style="width:100%;background:linear-gradient(135deg,#e8007d,#ff4db8);border:none;border-radius:10px;padding:15px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#fff;cursor:pointer;letter-spacing:1px;margin-bottom:10px;">✅ Verify & Credit Balance</button>
-        <button onclick="showDepositStep(1)" style="width:100%;background:transparent;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;">← Back</button>
+
+        <!-- Amount input -->
+        <div style="background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;margin-bottom:14px;">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">💰 Amount (ETB)</div>
+          <div style="display:flex;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;overflow:hidden;margin-bottom:10px;" id="depositAmtWrap">
+            <div style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text3);border-right:1px solid var(--border2);">ETB</div>
+            <input type="number" id="depositAmount" placeholder="0.00" min="50" style="flex:1;background:transparent;border:none;color:var(--text);padding:12px 14px;font-size:18px;font-weight:700;outline:none;font-family:'Oswald',sans-serif;" oninput="document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'">
+          </div>
+          <div style="display:flex;gap:6px;">
+            <div onclick="document.getElementById('depositAmount').value=50;document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">50</div>
+            <div onclick="document.getElementById('depositAmount').value=100;document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">100</div>
+            <div onclick="document.getElementById('depositAmount').value=200;document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">200</div>
+            <div onclick="document.getElementById('depositAmount').value=500;document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">500</div>
+            <div onclick="document.getElementById('depositAmount').value=1000;document.getElementById('depositAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">1K</div>
+          </div>
+        </div>
+
+        <!-- Transaction ID -->
+        <div style="background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;margin-bottom:14px;">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">🔑 Transaction ID <span style="color:var(--red);">*</span></div>
+          <input type="text" id="depositTxId" placeholder="e.g. TB2024XXXXXXX" style="width:100%;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;color:var(--text);padding:12px 14px;font-size:14px;font-weight:600;outline:none;transition:border-color 0.2s;font-family:'Roboto',sans-serif;" oninput="this.style.borderColor='var(--accent)'">
+          <div style="font-size:11px;color:var(--text2);margin-top:8px;display:flex;align-items:center;gap:5px;">💡 Telebirr ከፍለህ ከጨረስህ በኋላ Transaction ID ይሰጥሃል</div>
+        </div>
+
+        <div style="background:rgba(240,180,41,0.06);border:1px solid rgba(240,180,41,0.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.7;">
+          ⚠️ Transaction ID ካስገባህ በኋላ ጫን። Balance ወዲያው ይጨምራል።
+        </div>
+
+        <button onclick="confirmDeposit()" style="width:100%;background:linear-gradient(135deg,#e8007d,#ff4db8);border:none;border-radius:12px;padding:16px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:800;color:#fff;cursor:pointer;letter-spacing:1.5px;margin-bottom:10px;box-shadow:0 4px 16px rgba(232,0,125,0.35);transition:all 0.2s;">✅ VERIFY & CREDIT BALANCE</button>
+        <button onclick="showDepositStep(1)" style="width:100%;background:transparent;border:1px solid var(--border2);border-radius:12px;padding:13px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;">← ተመለስ</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- WITHDRAW MODAL -->
+<div class="page-overlay" id="page-withdraw" onclick="if(event.target===this)closePage('withdraw')">
+  <div class="page-panel" style="border-radius:22px 22px 0 0;">
+    <div class="page-header">
+      <div class="page-title">🏧 Withdraw</div>
+      <button class="close-btn" onclick="closePage('withdraw')">✕</button>
+    </div>
+    <div class="page-body">
+      <!-- Balance card -->
+      <div style="background:linear-gradient(135deg,#0e1c30,#152540);border:1px solid rgba(240,180,41,0.3);border-radius:16px;padding:18px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(240,180,41,0.1),transparent 70%);border-radius:50%;"></div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Available Balance</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:30px;font-weight:800;color:var(--accent);" id="withdrawBalDisplay">ETB 0.00</div>
+        </div>
+        <div style="font-size:36px;opacity:0.3;">💰</div>
+      </div>
+
+      <!-- Phone input -->
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;margin-bottom:14px;">
+        <div style="font-size:11px;color:var(--text2);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">📱 Telebirr Number *</div>
+        <div style="display:flex;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color 0.2s;" id="wdPhoneWrap">
+          <div style="padding:12px 14px;color:var(--text3);font-size:13px;font-weight:700;border-right:1px solid var(--border2);background:var(--bg);white-space:nowrap;">🇪🇹 +251</div>
+          <input id="withdrawPhone" type="tel" placeholder="9X XXX XXXX" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);padding:12px 14px;font-size:15px;font-weight:600;" oninput="document.getElementById('wdPhoneWrap').style.borderColor='var(--accent)'">
+        </div>
+      </div>
+
+      <!-- Amount input -->
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;margin-bottom:14px;">
+        <div style="font-size:11px;color:var(--text2);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">💵 Amount (ETB) *</div>
+        <div style="display:flex;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;overflow:hidden;margin-bottom:10px;transition:border-color 0.2s;" id="wdAmtWrap">
+          <div style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text3);border-right:1px solid var(--border2);">ETB</div>
+          <input id="withdrawAmount" type="number" placeholder="Min 50" min="50" style="flex:1;background:transparent;border:none;color:var(--text);padding:12px 14px;font-size:18px;font-weight:700;outline:none;font-family:'Oswald',sans-serif;" oninput="document.getElementById('wdAmtWrap').style.borderColor='var(--accent)'">
+        </div>
+        <div style="display:flex;gap:6px;">
+          <div onclick="document.getElementById('withdrawAmount').value=50;document.getElementById('wdAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);">50</div>
+          <div onclick="document.getElementById('withdrawAmount').value=100;document.getElementById('wdAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);">100</div>
+          <div onclick="document.getElementById('withdrawAmount').value=200;document.getElementById('wdAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);">200</div>
+          <div onclick="document.getElementById('withdrawAmount').value=500;document.getElementById('wdAmtWrap').style.borderColor='var(--accent)'" style="flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;color:var(--text3);">500</div>
+        </div>
+      </div>
+
+      <div id="withdrawErr" style="display:none;color:var(--red);font-size:12px;margin-bottom:12px;padding:12px;background:var(--red-glow);border-radius:10px;border:1px solid rgba(244,63,94,0.3);font-weight:600;"></div>
+
+      <div style="background:var(--green-glow);border:1px solid rgba(16,212,138,0.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.7;display:flex;gap:8px;align-items:flex-start;">
+        <span>⏱️</span><span>ጥያቄ ከ 24 ሰዓት ውስጥ ወደ Telebirr ቁጥርህ ይላካል።</span>
+      </div>
+
+      <button onclick="submitWithdraw()" style="width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:12px;padding:16px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:800;color:#000;cursor:pointer;letter-spacing:1.5px;box-shadow:0 4px 16px rgba(240,180,41,0.35);transition:all 0.2s;">✅ REQUEST WITHDRAWAL</button>
+    </div>
+  </div>
+</div>
+
 <script>
-// ============ DATA ============
 let bets = [];
 let balance = 50.00;
 
-const MATCHES_30 = [
-  {home:'Sidama Bunna',away:'Adama Kenema',hf:'⚽',af:'🟢',league:'🇪🇹 Ethiopia Premier League',time:'13:00',w1:1.83,draw:2.90,w2:4.50,markets:139},
-  {home:'PSG',away:'Arsenal',hf:'🔵',af:'🔴',league:'🌍 UEFA CL',time:'21:00',w1:2.38,draw:3.30,w2:3.00,markets:351},
-  {home:'Man United',away:'Chelsea',hf:'🔴',af:'🔵',league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League',time:'16:30',w1:2.10,draw:3.40,w2:3.20,markets:210},
-  {home:'Bayern Munich',away:'Dortmund',hf:'🔴',af:'🟡',league:'🇩🇪 Bundesliga',time:'17:30',w1:1.65,draw:3.80,w2:5.50,markets:198},
-  {home:'AC Milan',away:'Napoli',hf:'🔴',af:'🔵',league:'🇮🇹 Serie A',time:'18:00',w1:2.20,draw:3.10,w2:3.40,markets:175},
-  {home:'Atletico Madrid',away:'Sevilla',hf:'🔴',af:'⚪',league:'🇪🇸 La Liga',time:'19:00',w1:1.90,draw:3.20,w2:4.20,markets:160},
-  {home:'Ajax',away:'PSV',hf:'⚪',af:'🔴',league:'🇳🇱 Eredivisie',time:'15:00',w1:1.75,draw:3.50,w2:4.80,markets:120},
-  {home:'Porto',away:'Benfica',hf:'🔵',af:'🔴',league:'🇵🇹 Primeira Liga',time:'20:00',w1:2.05,draw:3.25,w2:3.60,markets:145},
-  {home:'Celtic',away:'Rangers',hf:'🟢',af:'🔵',league:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scottish PL',time:'13:30',w1:2.30,draw:3.10,w2:3.10,markets:110},
-  {home:'Fenerbahce',away:'Galatasaray',hf:'🟡',af:'🔴',league:'🇹🇷 Super Lig',time:'18:30',w1:2.50,draw:3.00,w2:2.90,markets:130},
-  {home:'Shakhtar',away:'Dynamo Kyiv',hf:'🟠',af:'🔵',league:'🇺🇦 UPL',time:'14:00',w1:1.85,draw:3.30,w2:4.50,markets:95},
-  {home:'Sporting CP',away:'Braga',hf:'🟢',af:'🔴',league:'🇵🇹 Primeira Liga',time:'16:00',w1:1.70,draw:3.60,w2:5.20,markets:115},
-  {home:'Lazio',away:'Roma',hf:'🔵',af:'🟡',league:'🇮🇹 Serie A',time:'20:45',w1:2.40,draw:3.10,w2:2.95,markets:188},
-  {home:'Marseille',away:'Lyon',hf:'🔵',af:'🔴',league:'🇫🇷 Ligue 1',time:'17:00',w1:2.00,draw:3.20,w2:3.75,markets:155},
-  {home:'Anderlecht',away:'Club Brugge',hf:'🟣',af:'🔵',league:'🇧🇪 Pro League',time:'15:30',w1:2.60,draw:3.00,w2:2.80,markets:100},
-];
+// Daily match cache — resets each calendar day
+let MATCHES_30 = [];
+
+const TEAM_FLAGS = {
+  // Europe top clubs
+  'PSG':'🔵','Arsenal':'🔴','Real Madrid':'⚪','Barcelona':'🔵','Bayern Munich':'🔴','Aba Lu':'🔴','Pamfalon':'🟡',
+  'Manchester City':'🔵','Liverpool':'🔴','Chelsea':'🔵','Juventus':'⚫','AC Milan':'🔴',
+  'Inter Milan':'🔵','Atletico Madrid':'🔴','Borussia Dortmund':'🟡','Ajax':'🔴',
+  'Porto':'🔵','Benfica':'🔴','Sevilla':'🔴','Villarreal':'🟡','Napoli':'🔵',
+  'Lazio':'🔵','Roma':'🟠','Fiorentina':'🟣','Atalanta':'🔵','Marseille':'🔵',
+  'Lyon':'🔵','Monaco':'🔴','Lens':'🔴','Rennes':'🔴','Nice':'🔴',
+  // Nordic
+  'Rosenborg':'⚫','Molde':'🔵','Brann':'🔴','Bodo/Glimt':'🟡','Viking':'🔵',
+  'Fredrikstad':'⚪','Lillestrom':'🟡','Stabæk':'🔵','HJK Helsinki':'🟡',
+  'KuPS':'🟡','SJK':'⚫','Ilves':'🟤','VPS':'🟢','FC Haka':'🔵',
+  'Malmö FF':'🔵','Djurgården':'🔵','Hammarby':'🟢','IFK Göteborg':'🔵','AIK':'⚫',
+  'Kalmar':'🟠','Mariehamn':'🔵','Inter Turku':'🔵',
+  // Americas
+  'LAFC':'⚫','Seattle Sounders':'🟢','LA Galaxy':'🔵','San Jose':'🔵',
+  'Portland Timbers':'🟢','Vancouver':'🔵','Inter Miami':'🩷','NY City FC':'🔵',
+  'Atlanta United':'🔴','Chicago Fire':'🔴','Flamengo':'🔴','Palmeiras':'🟢',
+  'Santos':'⚫','Sao Paulo':'🔴','Gremio':'🔵','Internacional':'🔴',
+  // Default
+};
+
+function getFlag(team) {
+  if (TEAM_FLAGS[team]) return TEAM_FLAGS[team];
+  const chars = ['🔵','🔴','🟡','🟢','⚫','⚪','🟠','🟣','🟤'];
+  return chars[team.charCodeAt(0) % chars.length];
+}
+
+// ============ DAILY MATCH FETCH - HARDCODED ============
+async function fetchDailyMatches() {
+  const today = new Date();
+
+  // HARDCODED match list — always shows these matches
+  MATCHES_30 = [
+    {home:'Aba Lu',away:'Pamfalon',league:'🇩🇪 Bundesliga',time:'17:30',w1:15.00,draw:3.80,w2:1.01,markets:330,hf:'🔴',af:'🟡'},
+    {home:'Liverpool',away:'Arsenal',league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League',time:'17:30',w1:1.90,draw:3.60,w2:4.00,markets:310,hf:'🔴',af:'🔴'},
+    {home:'Real Madrid',away:'Barcelona',league:'🇪🇸 La Liga',time:'21:00',w1:2.30,draw:3.20,w2:2.90,markets:390,hf:'⚪',af:'🔵'},
+    {home:'PSG',away:'Marseille',league:'🇫🇷 Ligue 1',time:'20:45',w1:1.60,draw:3.80,w2:5.50,markets:280,hf:'🔵',af:'🔵'},
+    {home:'Juventus',away:'Inter Milan',league:'🇮🇹 Serie A',time:'20:45',w1:2.40,draw:3.10,w2:2.95,markets:300,hf:'⚫',af:'🔵'},
+    {home:'Rosenborg',away:'Molde',league:'🇳🇴 Norway Eliteserien',time:'18:00',w1:2.20,draw:3.20,w2:3.30,markets:110,hf:'⚫',af:'🔵'},
+    {home:'Brann',away:'Bodo/Glimt',league:'🇳🇴 Norway Eliteserien',time:'20:00',w1:3.00,draw:3.10,w2:2.30,markets:105,hf:'🔴',af:'🟡'},
+    {home:'HJK Helsinki',away:'KuPS',league:'🇫🇮 Finland Veikkausliiga',time:'17:00',w1:1.75,draw:3.50,w2:5.00,markets:95,hf:'🟡',af:'🟡'},
+    {home:'Malmö FF',away:'Djurgården',league:'🇸🇪 Sweden Allsvenskan',time:'17:30',w1:1.70,draw:3.50,w2:5.20,markets:108,hf:'🔵',af:'🔵'},
+    {home:'LAFC',away:'Seattle Sounders',league:'🇺🇸 MLS',time:'05:30',w1:1.85,draw:3.40,w2:4.20,markets:120,hf:'⚫',af:'🟢'},
+    {home:'LA Galaxy',away:'Inter Miami',league:'🇺🇸 MLS',time:'05:30',w1:2.10,draw:3.20,w2:3.30,markets:115,hf:'🔵',af:'🩷'},
+  ].map(m => ({...m, hf: m.hf || getFlag(m.home), af: m.af || getFlag(m.away)}));
+  renderMatchList();
+}
+
+function generateFallbackMatches(today) {
+  const dow = today.getDay(); // 0=Sun, 6=Sat
+  const isWeekend = dow === 0 || dow === 6;
+  const isMidweek = dow === 2 || dow === 3;
+  const base = [];
+
+  if (isMidweek) {
+    base.push(
+      {home:'Real Madrid',away:'Manchester City',league:'🏆 UEFA Champions League',time:'22:00',w1:2.10,draw:3.40,w2:3.20,markets:380},
+      {home:'Bayern Munich',away:'PSG',league:'🏆 UEFA Champions League',time:'22:00',w1:1.85,draw:3.50,w2:4.00,markets:360},
+      {home:'Arsenal',away:'Atletico Madrid',league:'🏆 UEFA Champions League',time:'19:45',w1:2.20,draw:3.30,w2:3.10,markets:340},
+      {home:'Barcelona',away:'Inter Milan',league:'🏆 UEFA Champions League',time:'19:45',w1:1.95,draw:3.40,w2:3.80,markets:360},
+    );
+  } else if (isWeekend) {
+    base.push(
+      {home:'Liverpool',away:'Arsenal',league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League',time:'17:30',w1:1.90,draw:3.60,w2:4.00,markets:310},
+      {home:'Real Madrid',away:'Barcelona',league:'🇪🇸 La Liga',time:'21:00',w1:2.30,draw:3.20,w2:2.90,markets:390},
+      {home:'Aba Lu',away:'Pamfalon',league:'🇩🇪 Bundesliga',time:'17:30',w1:15.00,draw:3.80,w2:1.01,markets:330},
+      {home:'PSG',away:'Marseille',league:'🇫🇷 Ligue 1',time:'20:45',w1:1.60,draw:3.80,w2:5.50,markets:280},
+      {home:'Juventus',away:'Inter Milan',league:'🇮🇹 Serie A',time:'20:45',w1:2.40,draw:3.10,w2:2.95,markets:300},
+    );
+  } else {
+    base.push(
+      {home:'Borussia Dortmund',away:'Bayer Leverkusen',league:'🇩🇪 Bundesliga',time:'20:30',w1:2.20,draw:3.30,w2:3.10,markets:220},
+      {home:'Marseille',away:'Lyon',league:'🇫🇷 Ligue 1',time:'20:45',w1:2.00,draw:3.20,w2:3.60,markets:195},
+    );
+  }
+
+  // Always add Nordic (play in summer)
+  base.push(
+    {home:'Rosenborg',away:'Molde',league:'🇳🇴 Norway Eliteserien',time:'18:00',w1:2.20,draw:3.20,w2:3.30,markets:110},
+    {home:'Brann',away:'Bodo/Glimt',league:'🇳🇴 Norway Eliteserien',time:'20:00',w1:3.00,draw:3.10,w2:2.30,markets:105},
+    {home:'HJK Helsinki',away:'KuPS',league:'🇫🇮 Finland Veikkausliiga',time:'17:00',w1:1.75,draw:3.50,w2:5.00,markets:95},
+    {home:'Malmö FF',away:'Djurgården',league:'🇸🇪 Sweden Allsvenskan',time:'17:30',w1:1.70,draw:3.50,w2:5.20,markets:108},
+    {home:'LAFC',away:'Seattle Sounders',league:'🇺🇸 MLS',time:'05:30',w1:1.85,draw:3.40,w2:4.20,markets:120},
+    {home:'LA Galaxy',away:'Inter Miami',league:'🇺🇸 MLS',time:'05:30',w1:2.10,draw:3.20,w2:3.30,markets:115},
+  );
+
+  return base.map(m => ({ ...m, hf: getFlag(m.home), af: getFlag(m.away) }));
+}
 
 const GAMES_CRASH = [{icon:'💥',name:'Crash',badge:'HOT',badgeType:'hot'},{icon:'🌙',name:'Moon',badge:'HOT',badgeType:'hot'},{icon:'⚡',name:'Lightning',badge:'NEW',badgeType:''}];
 const GAMES_INSTANT = [{icon:'💣',name:'Mines',badge:'NEW',badgeType:''},{icon:'🎲',name:'Dice',badge:'',badgeType:''},{icon:'🎡',name:'Wheel',badge:'',badgeType:''},{icon:'🎳',name:'Plinko',badge:'',badgeType:''},{icon:'🐉',name:'Dragon Tower',badge:'NEW',badgeType:''},{icon:'🎯',name:'Dart',badge:'',badgeType:''}];
@@ -909,7 +1263,7 @@ function renderMatchList() {
       <div class="match-row-header">
         <div class="league-name">${m.league}</div>
         <div class="match-time">${m.time}</div>
-        <div class="more-markets" onclick="toggleMarkets(${i})">+${m.markets} Markets</div>
+        <div class="more-markets" onclick="toggleMarkets(${i})">+${m.markets} Markets ▾</div>
       </div>
       <div class="match-row-teams">
         <div class="match-row-team">
@@ -930,698 +1284,97 @@ function renderMatchList() {
         <div class="odd-btn" onclick="selectOdd(this,'1 or 2','1/2','${(m.w1*0.7).toFixed(2)}','${m.home} vs ${m.away}')"><div class="odd-label">1/2</div><div class="odd-value">${(m.w1*0.7).toFixed(2)}</div></div>
       </div>
       <div class="markets-panel" id="markets_${i}">
-        <div class="market-title">Double Chance</div>
-        <div class="market-odds-row">
-          <div class="odd-btn" onclick="selectOdd(this,'1X','1X','${(m.w1*0.55).toFixed(2)}','${m.home} vs ${m.away}')"><div class="odd-label">1X</div><div class="odd-value">${(m.w1*0.55).toFixed(2)}</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'12','12','${(m.w1*0.65).toFixed(2)}','${m.home} vs ${m.away}')"><div class="odd-label">12</div><div class="odd-value">${(m.w1*0.65).toFixed(2)}</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'X2','X2','${(m.w2*0.55).toFixed(2)}','${m.home} vs ${m.away}')"><div class="odd-label">X2</div><div class="odd-value">${(m.w2*0.55).toFixed(2)}</div></div>
+        <div style="text-align:center;padding:16px;color:var(--text2);font-size:12px;" id="markets_loading_${i}">
+          <div style="display:inline-flex;gap:4px;align-items:center;">
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.2s infinite;"></div>
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.2s 0.4s infinite;"></div>
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.2s 0.8s infinite;"></div>
+          </div>
+          <span style="margin-left:8px;">Markets እየተጫኑ ናቸው...</span>
         </div>
-        <div class="market-title">Over / Under 2.5</div>
-        <div class="market-odds-row">
-          <div class="odd-btn" onclick="selectOdd(this,'Over 2.5','O2.5','1.85','${m.home} vs ${m.away}')"><div class="odd-label">Over 2.5</div><div class="odd-value">1.85</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'Under 2.5','U2.5','1.95','${m.home} vs ${m.away}')"><div class="odd-label">Under 2.5</div><div class="odd-value">1.95</div></div>
-        </div>
-        <div class="market-title">Both Teams to Score</div>
-        <div class="market-odds-row">
-          <div class="odd-btn" onclick="selectOdd(this,'BTTS Yes','BTTS Y','1.75','${m.home} vs ${m.away}')"><div class="odd-label">Yes</div><div class="odd-value">1.75</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'BTTS No','BTTS N','2.05','${m.home} vs ${m.away}')"><div class="odd-label">No</div><div class="odd-value">2.05</div></div>
-        </div>
-        <div class="market-title">Correct Score</div>
-        <div class="market-odds-row" style="flex-wrap:wrap;">
-          <div class="odd-btn" onclick="selectOdd(this,'1-0','CS 1-0','6.50','${m.home} vs ${m.away}')"><div class="odd-label">1-0</div><div class="odd-value">6.50</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'2-1','CS 2-1','9.50','${m.home} vs ${m.away}')"><div class="odd-label">2-1</div><div class="odd-value">9.50</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'1-1','CS 1-1','6.00','${m.home} vs ${m.away}')"><div class="odd-label">1-1</div><div class="odd-value">6.00</div></div>
-          <div class="odd-btn" onclick="selectOdd(this,'0-1','CS 0-1','7.50','${m.home} vs ${m.away}')"><div class="odd-label">0-1</div><div class="odd-value">7.50</div></div>
-        </div>
+        <div id="markets_content_${i}"></div>
       </div>
     </div>
   `).join('');
 }
 
 function toggleMarkets(i) {
-  document.getElementById('markets_' + i).classList.toggle('open');
-}
-
-function launchGame(name) {
-  if (name === 'Aviator') { openAviator(); return; }
-  showToast('🎮 ' + name + ' coming soon!');
-}
-
-function openKeno() {
-  closePage('games');
-  document.getElementById('page-keno').classList.add('open');
-  setTimeout(kenoInit, 80);
-  setTimeout(kenoUpdateBal, 150);
-}
-
-// ============ BETSLIP ============
-function selectOdd(btn, selection, market, odd, match) {
-  const isSelected = btn.classList.contains('selected');
-  if (isSelected) {
-    btn.classList.remove('selected');
-    bets = bets.filter(b => !(b.match === match && b.market === market));
-  } else {
-    const existing = bets.findIndex(b => b.match === match);
-    if (existing !== -1) {
-      if (bets[existing].btn) bets[existing].btn.classList.remove('selected');
-      bets.splice(existing, 1);
-    }
-    btn.classList.add('selected');
-    bets.push({ match, selection, market, odd: parseFloat(odd), btn });
-  }
-  updateBetslipUI();
-}
-
-function updateBetslipUI() {
-  const fab = document.getElementById('betslipFab');
-  document.getElementById('betCount').textContent = bets.length;
-  fab.style.display = bets.length > 0 ? 'flex' : 'none';
-}
-
-function openBetslip() { document.getElementById('betslipOverlay').classList.add('open'); renderBetslip(); }
-function closeBetslip() { document.getElementById('betslipOverlay').classList.remove('open'); }
-function closeBetslipOutside(e) { if (e.target === document.getElementById('betslipOverlay')) closeBetslip(); }
-
-function renderBetslip() {
-  const content = document.getElementById('betslipContent');
-  const footer = document.getElementById('betslipFooter');
-  const countEl = document.getElementById('betslipCount');
-  if (bets.length === 0) {
-    content.innerHTML = `<div class="betslip-empty"><div style="font-size:48px">🎯</div><div>Select odds to add bets</div></div>`;
-    footer.style.display = 'none'; countEl.textContent = ''; return;
-  }
-  countEl.textContent = `(${bets.length})`;
-  footer.style.display = 'block';
-  content.innerHTML = bets.map((bet, i) => `
-    <div class="betslip-item">
-      <div class="betslip-item-match">${bet.match}</div>
-      <div class="betslip-item-selection">${bet.selection} — <span class="betslip-item-odd">${bet.odd.toFixed(2)}</span></div>
-      <button class="remove-bet" onclick="removeBetByIndex(${i})">✕</button>
-    </div>
-  `).join('');
-  updatePotential();
-}
-
-function removeBetByIndex(i) {
-  if (bets[i] && bets[i].btn) bets[i].btn.classList.remove('selected');
-  bets.splice(i, 1); updateBetslipUI(); renderBetslip();
-  if (bets.length === 0) closeBetslip();
-}
-
-function setStake(amount) {
-  const input = document.getElementById('stakeInput');
-  input.value = (parseFloat(input.value) || 0) + amount;
-  updatePotential();
-}
-
-function updatePotential() {
-  const stake = parseFloat(document.getElementById('stakeInput').value) || 0;
-  const totalOdd = bets.reduce((acc, b) => acc * b.odd, 1);
-  document.getElementById('potentialWin').textContent = 'ETB ' + (stake * totalOdd).toFixed(2);
-  document.getElementById('placeBetBtn').disabled = stake <= 0 || stake > balance;
-}
-
-function placeBet() {
-  const stake = parseFloat(document.getElementById('stakeInput').value) || 0;
-  if (stake <= 0) return;
-  if (stake > balance) { showToast('❌ Insufficient balance!', true); return; }
-  balance -= stake; updateBalanceDisplay();
-  bets.forEach(b => { if (b.btn) b.btn.classList.remove('selected'); });
-  bets = []; document.getElementById('stakeInput').value = '';
-  closeBetslip(); updateBetslipUI(); showToast('✅ Bet placed successfully!');
-}
-
-function updateBalanceDisplay() {
-  const formatted = balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  document.getElementById('balanceDisplay').textContent = '💰 ETB ' + formatted;
-  const wb = document.getElementById('walletBalance'); if (wb) wb.textContent = 'ETB ' + formatted;
-  const pb = document.getElementById('profileBalance'); if (pb) pb.textContent = 'ETB ' + formatted;
-}
-
-// ============ NAVIGATION ============
-function showPage(page) {
-  document.querySelectorAll('.nav-item').forEach((n,i) => {
-    n.classList.toggle('active', ['sports','games','invite','wallet','profile'][i] === page);
-  });
-  if (page === 'sports') return;
-  if (page === 'wallet') updateBalanceDisplay();
-  if (page === 'games') {
-    document.getElementById('page-games').classList.add('open');
-    renderGamesGrid(GAMES_CRASH, 'gameGridCrash');
-    renderGamesGrid(GAMES_INSTANT, 'gameGridInstant');
-    renderGamesGrid(GAMES_TABLE, 'gameGridTable');
-    return;
-  }
-  document.getElementById('page-' + page).classList.add('open');
-}
-
-function closePage(page) {
-  document.getElementById('page-' + page).classList.remove('open');
-  document.querySelectorAll('.nav-item').forEach((n,i) => n.classList.toggle('active', i === 0));
-}
-
-function setTime(btn) {
-  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function copyCode() { navigator.clipboard.writeText('HABESHA25').catch(()=>{}); showToast('✅ Referral code copied!'); }
-
-function showToast(msg, isError) {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.className = 'toast' + (isError ? ' error' : '');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2500);
-}
-
-document.querySelectorAll('.sport-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.sport-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-  });
-});
-
-renderMatchList();
-
-// ===== AVIATOR =====
-let aviBalance = 50;
-let aviState = 'waiting';
-let aviMult = 1.00;
-let aviCrashAt = 2.00;
-let aviGameInt = null;
-let aviWaitInt = null;
-let aviWaitT = 5;
-let aviBet1On = false;
-let aviBet1Active = false;
-let aviBet1Stake = 50;
-let aviBet2On = false;
-let aviBet2Active = false;
-let aviAutoOn = false;
-let aviCanvas2, aviCtx2, aviPts = [];
-let aviFakePlayers = [];
-const AVI_NAMES = ['Abebe','Kebede','Tigist','Meron','Dawit','Selam','Yonas','Hiwot','Biruk','Alem','Tewodros','Frehiwot','Liya','Samuel','Bethlehem','Natnael'];
-
-function openAviator() {
-  aviBalance = balance;
-  document.getElementById('aviPage').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  aviUpdateBal();
-  setTimeout(() => {
-    aviCanvas2 = document.getElementById('aviCanvas');
-    aviCtx2 = aviCanvas2.getContext('2d');
-    aviResize(); aviFakeGen(); aviRenderBets(); aviStartWait();
-  }, 60);
-}
-
-function closeAviator() {
-  document.getElementById('aviPage').classList.remove('open');
-  document.body.style.overflow = '';
-  if (aviGameInt) { clearInterval(aviGameInt); aviGameInt = null; }
-  if (aviWaitInt) { clearInterval(aviWaitInt); aviWaitInt = null; }
-  balance = aviBalance; updateBalanceDisplay();
-}
-
-function aviResize() {
-  if (!aviCanvas2) return;
-  const wrap = document.getElementById('aviWrap');
-  aviCanvas2.width = wrap.offsetWidth; aviCanvas2.height = wrap.offsetHeight;
-}
-
-function aviFakeGen() {
-  aviFakePlayers = [];
-  const n = 10 + Math.floor(Math.random() * 10);
-  document.getElementById('aviAllCount').textContent = n;
-  for (let i = 0; i < n; i++) {
-    const name = AVI_NAMES[Math.floor(Math.random() * AVI_NAMES.length)];
-    aviFakePlayers.push({ name: name + Math.floor(Math.random()*99), stake: (Math.floor(Math.random()*20)+1)*10, cashout: null });
+  const panel = document.getElementById('markets_' + i);
+  const isOpen = panel.classList.toggle('open');
+  if (isOpen && !panel.dataset.loaded) {
+    panel.dataset.loaded = '1';
+    fetchMatchMarkets(i);
   }
 }
 
-function aviRenderBets() {
-  const list = document.getElementById('aviBetsList');
-  if (!list) return;
-  list.innerHTML = aviFakePlayers.map(p => `
-    <div class="avi-bet-row">
-      <div class="avi-bet-user">${p.name}</div>
-      <div class="avi-bet-amt">ETB ${p.stake}</div>
-      <div class="avi-bet-mult ${p.cashout ? 'won' : 'active'}">${p.cashout ? p.cashout.toFixed(2)+'x' : '—'}</div>
-    </div>
-  `).join('');
-  // top bets
-  const topList = document.getElementById('aviTopBetsList');
-  if (topList) {
-    const sorted = [...aviFakePlayers].filter(p=>p.cashout).sort((a,b)=>(b.cashout*b.stake)-(a.cashout*a.stake)).slice(0,5);
-    topList.innerHTML = sorted.length ? sorted.map(p => `
-      <div class="avi-bet-row">
-        <div class="avi-bet-user">${p.name}</div>
-        <div class="avi-bet-amt">ETB ${p.stake}</div>
-        <div class="avi-bet-mult won">${p.cashout.toFixed(2)}x</div>
-      </div>
-    `).join('') : '<div style="padding:10px 12px;font-size:12px;color:#3a6a48;">No cashouts yet</div>';
-  }
-}
-
-function aviStartWait() {
-  aviState = 'waiting'; aviMult = 1.00; aviPts = [];
-  aviBet1Active = false; aviBet2Active = false;
-  aviClearCanvas(); aviFakeGen(); aviRenderBets();
-  const waitOv = document.getElementById('aviWaitOv');
-  const flewOv = document.getElementById('aviFlewOv');
-  if (waitOv) waitOv.classList.remove('hide');
-  if (flewOv) flewOv.classList.remove('show');
-  const multNum = document.getElementById('aviMultNum');
-  if (multNum) { multNum.textContent = '1.00x'; multNum.style.color = '#00c853'; }
-  const multLbl = document.getElementById('aviMultLbl');
-  if (multLbl) multLbl.textContent = 'WAITING...';
-  aviWaitT = 5; aviUpdateWaitBar();
-  if (aviWaitInt) clearInterval(aviWaitInt);
-  aviWaitInt = setInterval(() => {
-    if (!document.getElementById('aviPage').classList.contains('open')) { clearInterval(aviWaitInt); return; }
-    aviWaitT -= 0.1;
-    const num = document.getElementById('aviWaitNum');
-    if (num) num.textContent = Math.ceil(Math.max(aviWaitT, 0));
-    const bar = document.getElementById('aviWaitBar');
-    if (bar) bar.style.width = Math.max(aviWaitT / 5 * 100, 0) + '%';
-    if (aviWaitT <= 0) { clearInterval(aviWaitInt); aviWaitInt = null; aviStartFly(); }
-  }, 100);
-}
-
-function aviUpdateWaitBar() { const bar = document.getElementById('aviWaitBar'); if (bar) bar.style.width = '100%'; }
-
-function aviGenCrash() {
-  const r = Math.random();
-  if (r < 0.33) return 1.0 + Math.random() * 0.85;
-  if (r < 0.58) return 1.85 + Math.random() * 2.5;
-  if (r < 0.78) return 4.0 + Math.random() * 7.0;
-  if (r < 0.92) return 11.0 + Math.random() * 25.0;
-  return 36.0 + Math.random() * 80.0;
-}
-
-function aviStartFly() {
-  aviState = 'flying'; aviMult = 1.00; aviPts = [];
-  aviCrashAt = aviGenCrash();
-  const waitOv = document.getElementById('aviWaitOv');
-  if (waitOv) waitOv.classList.add('hide');
-  if (aviBet1On) { aviBet1Active = true; aviBet1On = false; }
-  if (aviBet2On) { aviBet2Active = true; aviBet2On = false; }
-  aviBet1UpdateBtn();
-  let t = 0;
-  const wrap = document.getElementById('aviWrap');
-  const W = wrap ? wrap.offsetWidth : 350;
-  const H = wrap ? wrap.offsetHeight : 240;
-  const planeEl = document.getElementById('aviPlane');
-  if (aviGameInt) clearInterval(aviGameInt);
-  aviGameInt = setInterval(() => {
-    if (!document.getElementById('aviPage').classList.contains('open')) { clearInterval(aviGameInt); return; }
-    t += 0.055; aviMult = Math.pow(Math.E, t * 0.38);
-    const multNum = document.getElementById('aviMultNum');
-    if (multNum) {
-      multNum.textContent = aviMult.toFixed(2) + 'x';
-      if (aviMult < 2) multNum.style.color = '#00c853';
-      else if (aviMult < 5) multNum.style.color = '#f5a623';
-      else multNum.style.color = '#ff5533';
-    }
-    const multLbl = document.getElementById('aviMultLbl');
-    if (multLbl) multLbl.textContent = 'FLYING...';
-    const px = Math.min(0.08 + t * 0.19, 0.87) * W;
-    const rawY = Math.min(0.08 + t * 0.25, 0.88) * H;
-    const py = H - rawY;
-    if (planeEl) { planeEl.style.left = (px - 22) + 'px'; planeEl.style.top = (py - 14) + 'px'; planeEl.style.bottom = 'auto'; }
-    aviPts.push({x: px, y: py});
-    aviDrawCurve(W, H);
-    aviFakePlayers.forEach(p => {
-      if (!p.cashout && Math.random() < 0.012 && aviMult > 1.2) {
-        p.cashout = parseFloat((aviMult + Math.random() * 0.5).toFixed(2));
-        aviRenderBets();
-      }
-    });
-    if (aviAutoOn && aviBet1Active) {
-      const target = parseFloat(document.getElementById('aviAutoVal').value) || 2.0;
-      if (aviMult >= target) aviCashout1();
-    }
-    if (aviBet1Active) aviBet1UpdateBtn();
-    if (aviMult >= aviCrashAt) { clearInterval(aviGameInt); aviGameInt = null; aviDoCrash(); }
-  }, 80);
-}
-
-function aviDrawCurve(W, H) {
-  if (!aviCtx2 || !aviCanvas2 || aviPts.length < 2) return;
-  aviCtx2.clearRect(0, 0, aviCanvas2.width, aviCanvas2.height);
-  // Glow curve — green tint
-  aviCtx2.save();
-  aviCtx2.shadowColor = '#00e860';
-  aviCtx2.shadowBlur = 14;
-  aviCtx2.beginPath();
-  aviCtx2.moveTo(aviPts[0].x, aviPts[0].y);
-  for (let i = 1; i < aviPts.length; i++) aviCtx2.lineTo(aviPts[i].x, aviPts[i].y);
-  aviCtx2.strokeStyle = '#00e860';
-  aviCtx2.lineWidth = 2.5;
-  aviCtx2.stroke();
-  aviCtx2.restore();
-  // Fill
-  aviCtx2.beginPath();
-  aviCtx2.moveTo(aviPts[0].x, aviPts[0].y);
-  for (let i = 1; i < aviPts.length; i++) aviCtx2.lineTo(aviPts[i].x, aviPts[i].y);
-  aviCtx2.lineTo(aviPts[aviPts.length-1].x, H);
-  aviCtx2.lineTo(aviPts[0].x, H);
-  aviCtx2.closePath();
-  aviCtx2.fillStyle = 'rgba(0,232,96,0.06)';
-  aviCtx2.fill();
-}
-
-function aviClearCanvas() {
-  if (aviCtx2 && aviCanvas2) aviCtx2.clearRect(0, 0, aviCanvas2.width, aviCanvas2.height);
-  const pl = document.getElementById('aviPlane');
-  if (pl) { pl.style.left = '10px'; pl.style.top = 'auto'; pl.style.bottom = '10px'; }
-}
-
-function aviDoCrash() {
-  aviState = 'crashed';
-  if (aviBet1Active) aviBet1Active = false;
-  if (aviBet2Active) aviBet2Active = false;
-  const flewOv = document.getElementById('aviFlewOv');
-  if (flewOv) flewOv.classList.add('show');
-  const flewMult = document.getElementById('aviFlewMult');
-  if (flewMult) flewMult.textContent = aviCrashAt.toFixed(2) + 'x';
-  const multNum = document.getElementById('aviMultNum');
-  if (multNum) { multNum.textContent = aviCrashAt.toFixed(2) + 'x'; multNum.style.color = '#ff3d3d'; }
-  const multLbl = document.getElementById('aviMultLbl');
-  if (multLbl) multLbl.textContent = 'FLEW AWAY!';
-  aviBet1UpdateBtn();
-  aviAddHist(aviCrashAt);
-  setTimeout(() => { if (document.getElementById('aviPage').classList.contains('open')) aviStartWait(); }, 3500);
-}
-
-function aviAddHist(m) {
-  const row = document.getElementById('aviHist');
-  if (!row) return;
-  const cls = m < 2 ? 'low' : m < 5 ? 'mid' : m < 15 ? 'high' : 'mega';
-  const p = document.createElement('div');
-  p.className = 'avi-hpill ' + cls;
-  p.textContent = m.toFixed(2) + 'x';
-  row.insertBefore(p, row.firstChild);
-}
-
-function aviHandleBet() {
-  const stake = parseFloat(document.getElementById('aviStake').value) || 0;
-  if (stake <= 0) { showToast('ስቴክ ያስገቡ!', true); return; }
-  if (stake > aviBalance) { showToast('💰 Balance አይሰጥም!', true); return; }
-  if (aviState === 'waiting') {
-    if (!aviBet1On) { aviBet1Stake = stake; aviBalance -= stake; aviUpdateBal(); aviBet1On = true; showToast('✅ Bet placed — ETB ' + stake.toFixed(2)); aviBet1UpdateBtn(); }
-    else { aviBalance += aviBet1Stake; aviUpdateBal(); aviBet1On = false; showToast('❌ Bet cancelled'); aviBet1UpdateBtn(); }
-  } else if (aviState === 'flying') {
-    if (aviBet1Active) aviCashout1();
-    else { aviBet1Stake = stake; aviBalance -= stake; aviUpdateBal(); aviBet1Active = true; showToast('✅ Bet placed!'); }
-  }
-}
-
-function aviCashout1() {
-  if (!aviBet1Active) return;
-  const win = aviBet1Stake * aviMult;
-  aviBalance += win; aviUpdateBal();
-  aviBet1Active = false; aviBet1On = false;
-  aviShowWin(win, aviMult);
-  showToast('💰 Cashed out! ETB ' + win.toFixed(2));
-  aviBet1UpdateBtn();
-}
-
-function aviHandleBet2() {
-  const stake = parseFloat(document.getElementById('aviStake2').value) || 0;
-  if (stake <= 0 || stake > aviBalance) return;
-  if (aviState === 'waiting') {
-    if (!aviBet2On) { aviBalance -= stake; aviUpdateBal(); aviBet2On = true; showToast('✅ Bet 2 placed — ETB ' + stake); }
-    else { aviBalance += stake; aviUpdateBal(); aviBet2On = false; }
-  } else if (aviState === 'flying' && aviBet2Active) {
-    const win = stake * aviMult; aviBalance += win; aviUpdateBal();
-    aviBet2Active = false; aviBet2On = false; aviShowWin(win, aviMult);
-  }
-}
-
-function aviBet1UpdateBtn() {
-  const btn = document.getElementById('aviMainBtn');
-  if (!btn) return;
-  if (aviState === 'waiting') {
-    if (aviBet1On) { btn.className = 'avi-main-btn cancel'; btn.innerHTML = 'CANCEL BET<span class="avi-btn-sub">ETB ' + aviBet1Stake.toFixed(2) + ' pending</span>'; }
-    else { const s = parseFloat(document.getElementById('aviStake').value) || 50; btn.className = 'avi-main-btn bet'; btn.innerHTML = 'BET ETB ' + s.toFixed(2) + '<span class="avi-btn-sub">Place bet for next round</span>'; }
-  } else if (aviState === 'flying') {
-    if (aviBet1Active) { const win = aviBet1Stake * aviMult; btn.className = 'avi-main-btn cashout'; btn.innerHTML = 'CASH OUT<span class="avi-btn-sub">ETB ' + win.toFixed(2) + ' @ ' + aviMult.toFixed(2) + 'x</span>'; }
-    else { const s = parseFloat(document.getElementById('aviStake').value) || 50; btn.className = 'avi-main-btn bet'; btn.innerHTML = 'BET ETB ' + s.toFixed(2) + '<span class="avi-btn-sub">In-flight bet</span>'; }
-  } else { const s = parseFloat(document.getElementById('aviStake').value) || 50; btn.className = 'avi-main-btn bet'; btn.innerHTML = 'BET ETB ' + s.toFixed(2) + '<span class="avi-btn-sub">Place bet for next round</span>'; }
-}
-
-function aviUpdateMainBtn() { if (aviState !== 'waiting' || aviBet1On) return; const s = parseFloat(document.getElementById('aviStake').value) || 0; const btn = document.getElementById('aviMainBtn'); if (btn) btn.innerHTML = 'BET ETB ' + s.toFixed(2) + '<span class="avi-btn-sub">Place bet for next round</span>'; }
-
-function aviAdjStake(id, delta) { const inp = document.getElementById(id); inp.value = Math.max(10, (parseFloat(inp.value)||0) + delta); if (id === 'aviStake') aviUpdateMainBtn(); }
-function aviSetStake(id, val) { document.getElementById(id).value = val; if (id === 'aviStake') aviUpdateMainBtn(); }
-function aviToggleAuto() { aviAutoOn = !aviAutoOn; document.getElementById('aviAutoTog').classList.toggle('on', aviAutoOn); }
-
-function aviSwitchTab(el, tabId) {
-  document.querySelectorAll('.avi-ptab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  ['aviTab1','aviTab2','aviTabAuto'].forEach(id => { document.getElementById(id).style.display = id === tabId ? 'block' : 'none'; });
-}
-
-function aviSwitchBetTab(el, listId) {
-  document.querySelectorAll('.avi-bets-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  ['aviBetsList','aviMyBetsList','aviTopBetsList'].forEach(id => { document.getElementById(id).style.display = id === listId ? 'block' : 'none'; });
-}
-
-function aviUpdateBal() { const fmt = aviBalance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); const el = document.getElementById('aviBal'); if (el) el.textContent = '💰 ETB ' + fmt; }
-
-function aviShowWin(amt, mult) {
-  document.getElementById('aviWinAmt').textContent = '+ETB ' + amt.toFixed(2);
-  document.getElementById('aviWinMult').textContent = 'at ' + mult.toFixed(2) + 'x';
-  const pop = document.getElementById('aviWinPop'); pop.classList.add('show');
-  setTimeout(() => pop.classList.remove('show'), 3000);
-}
-
-window.addEventListener('resize', aviResize);
-
-// ===== DEPOSIT =====
-function openDepositModal() { showDepositStep(1); document.getElementById('page-deposit').classList.add('open'); }
-function closeDepositOutside(e) { if (e.target === document.getElementById('page-deposit')) closePage('deposit'); }
-function showDepositStep(n) { document.getElementById('depositStep1').style.display = n===1?'block':'none'; document.getElementById('depositStep2').style.display = n===2?'block':'none'; }
-function selectDepositMethod(m) { if (m === 'telebirr') showDepositStep(2); }
-function copyTelebirrNum() { navigator.clipboard.writeText('0979508190').catch(()=>{}); showToast('✅ Number copied!'); }
-const BACKEND_URL = 'https://zplay-backend.onrender.com';
-
-async function confirmDeposit() {
-  const amt = parseFloat(document.getElementById('depositAmount').value) || 0;
-  const txId = (document.getElementById('depositTxId').value || '').trim();
-  if (amt < 1) { showToast('❌ Minimum deposit ETB 1', true); return; }
-  if (!txId) { showToast('❌ Transaction ID አስገባ!', true); return; }
-  const btn = document.querySelector('[onclick="confirmDeposit()"]');
-  if (btn) { btn.disabled = true; btn.textContent = '⏳ Verifying...'; }
+async function fetchMatchMarkets(i) {
+  const m = MATCHES_30[i];
+  if (!m) return;
+  const matchName = `${m.home} vs ${m.away}`;
+  const cacheKey = 'qb_mkts_' + matchName.replace(/\s/g,'_') + '_' + new Date().toISOString().slice(0,10);
+  
+  // Check cache first
   try {
-    const resp = await fetch(BACKEND_URL + '/verify-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ txId, phone: window._fbCurrentUser?.phone || '', amount: amt })
-    });
-    const data = await resp.json();
-    if (data.success) {
-      const creditAmt = data.amount || amt;
-      balance += creditAmt;
-      updateBalanceDisplay();
-      closePage('deposit');
-      showToast('✅ ETB ' + creditAmt.toFixed(2) + ' balance ላይ ተጨምሯል!');
-      if (window.saveCurrentUser) saveCurrentUser();
-    } else if (data.needsManualReview) {
-      closePage('deposit');
-      showToast('⏳ ' + (data.message || 'Pending review'));
-    } else {
-      showToast('❌ ' + (data.message || 'Verification failed'), true);
-    }
-  } catch (err) {
-    closePage('deposit');
-    showToast('⏳ Payment recorded. Admin ያረጋግጣሉ።');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = '✅ Verify & Credit Balance'; }
-  }
-}
-
-// ===== SEARCH =====
-function openSearch() {
-  document.getElementById('searchOverlay').classList.add('open');
-  setTimeout(() => document.getElementById('searchInput').focus(), 100);
-  searchMatches('');
-}
-
-function closeSearch() {
-  document.getElementById('searchOverlay').classList.remove('open');
-  document.getElementById('searchInput').value = '';
-}
-
-function searchMatches(query) {
-  const results = document.getElementById('searchResults');
-  const q = query.trim().toLowerCase();
-
-  // Filter matches
-  const filtered = MATCHES_30.filter(m =>
-    m.home.toLowerCase().includes(q) ||
-    m.away.toLowerCase().includes(q) ||
-    m.league.toLowerCase().includes(q)
-  );
-
-  if (filtered.length === 0) {
-    results.innerHTML = `<div class="search-empty">😔 No results for "<strong>${query}</strong>"</div>`;
-    return;
-  }
-
-  results.innerHTML = (q ? '' : '<div class="search-cat">⚽ ALL MATCHES</div>') +
-    filtered.map(m => `
-      <div class="search-result-item" onclick="closeSearch();scrollToMatch('${m.home} vs ${m.away}')">
-        <div class="search-result-league">${m.league}</div>
-        <div class="search-result-teams">${m.hf} ${m.home} <span style="color:var(--text2);font-size:12px;">vs</span> ${m.away} ${m.af}</div>
-        <div class="search-result-time">⏰ ${m.time} &nbsp;·&nbsp; 1: <span style="color:var(--accent)">${m.w1.toFixed(2)}</span> &nbsp; X: <span style="color:var(--accent)">${m.draw.toFixed(2)}</span> &nbsp; 2: <span style="color:var(--accent)">${m.w2.toFixed(2)}</span></div>
-      </div>
-    `).join('');
-}
-
-function scrollToMatch(matchName) {
-  // Find the match row by searching text content
-  const rows = document.querySelectorAll('.match-row');
-  for (const row of rows) {
-    if (row.textContent.includes(matchName.split(' vs ')[0])) {
-      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      row.style.borderColor = 'var(--accent)';
-      setTimeout(() => row.style.borderColor = '', 2000);
-      break;
-    }
-  }
-}
-
-// Close search on background tap
-document.getElementById('searchOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeSearch();
-});
-
-const KENO_PAYOUTS = [0,0,0,1,2,4,10,25,75,250,1000];
-let kenoPicks = new Set();
-let kenoRoundNum = 1;
-let kenoBetHistory = [];
-let kenoPlaying = false;
-let kenoTimerInt = null;
-let kenoTimerSecs = 180;
-
-function kenoStartTimer() {
-  if (kenoTimerInt) clearInterval(kenoTimerInt);
-  kenoTimerSecs = 180;
-  kenoTimerInt = setInterval(() => {
-    kenoTimerSecs = Math.max(0, kenoTimerSecs - 1);
-    const el = document.getElementById('kenoTimer');
-    if (el) { const m = Math.floor(kenoTimerSecs/60); const s = kenoTimerSecs%60; el.textContent = m + ':' + String(s).padStart(2,'0'); }
-    if (kenoTimerSecs <= 0) { kenoTimerSecs = 180; }
-  }, 1000);
-}
-
-function kenoInit() {
-  const grid = document.getElementById('kenoGrid');
-  if (!grid) return;
-  if (grid.children.length > 0) { kenoUpdateBal(); return; }
-  for (let i = 1; i <= 80; i++) {
-    const el = document.createElement('div');
-    el.className = 'keno-num'; el.textContent = i; el.id = 'kn' + i;
-    el.onclick = () => kenoToggle(i, el);
-    grid.appendChild(el);
-  }
-  kenoRenderPayTable(); kenoUpdateBal(); kenoStartTimer();
-}
-
-function kenoToggle(n, el) {
-  if (kenoPlaying) return;
-  if (kenoPicks.has(n)) { kenoPicks.delete(n); el.classList.remove('picked'); }
-  else { if (kenoPicks.size >= 10) { showToast('Maximum 10 numbers!', true); return; } kenoPicks.add(n); el.classList.add('picked'); }
-  document.getElementById('kenoSelCount').textContent = kenoPicks.size + ' / 10';
-  kenoUpdatePayout();
-}
-
-function kenoUpdatePayout() {
-  const stake = parseFloat(document.getElementById('kenoStake').value) || 0;
-  const picks = kenoPicks.size;
-  if (picks === 0 || stake <= 0) { document.getElementById('kenoPotential').textContent = 'ETB 0.00'; return; }
-  const maxMult = KENO_PAYOUTS[picks] || KENO_PAYOUTS[10];
-  document.getElementById('kenoPotential').textContent = 'ETB ' + (stake * maxMult).toFixed(2) + ' (max)';
-}
-
-function kenoAddStake(a) { const inp = document.getElementById('kenoStake'); inp.value = (parseFloat(inp.value)||0)+a; kenoUpdatePayout(); }
-
-function kenoClearPicks() {
-  if (kenoPlaying) return;
-  kenoPicks.forEach(n => { const el = document.getElementById('kn'+n); if (el) el.classList.remove('picked','drawn','hit','miss'); });
-  kenoPicks.clear(); document.getElementById('kenoSelCount').textContent = '0 / 10';
-  document.getElementById('kenoDrawn').innerHTML = ''; document.getElementById('kenoMatches').textContent = '—';
-  kenoUpdatePayout();
-}
-
-function kenoRenderPayTable() {
-  const el = document.getElementById('kenoPayTable'); if (!el) return;
-  el.innerHTML = KENO_PAYOUTS.map((m,i) => i===0 ? '' : `<div class="keno-pay-item"><div class="keno-pay-match">${i} hits</div><div class="keno-pay-mult">${m}x</div></div>`).join('');
-}
-
-function kenoUpdateBal() { const el = document.getElementById('kenoBal'); if (el) el.textContent = 'ETB ' + balance.toFixed(2); }
-
-function kenoPlaceBet() {
-  if (kenoPlaying) return;
-  if (kenoPicks.size === 0) { showToast('ቁጥር ምረጥ! (0-10)', true); return; }
-  const stake = parseFloat(document.getElementById('kenoStake').value) || 0;
-  if (stake < 5) { showToast('Minimum stake ETB 5', true); return; }
-  if (stake > balance) { showToast('❌ Balance አይሰጥም!', true); return; }
-  balance -= stake; updateBalanceDisplay(); kenoUpdateBal();
-  kenoPlaying = true;
-  document.getElementById('kenoBetBtn').disabled = true;
-  document.getElementById('kenoBetBtn').textContent = 'DRAWING...';
-  const pool = Array.from({length:80},(_,i)=>i+1);
-  const drawn = [];
-  for (let i = 0; i < 20; i++) { const idx = Math.floor(Math.random()*pool.length); drawn.push(pool.splice(idx,1)[0]); }
-  for (let i = 1; i <= 80; i++) { const el = document.getElementById('kn'+i); if (el) el.classList.remove('drawn','hit','miss'); }
-  document.getElementById('kenoDrawn').innerHTML = ''; document.getElementById('kenoMatches').textContent = '—';
-  let idx2 = 0, hits = 0;
-  const drawInterval = setInterval(() => {
-    if (idx2 >= drawn.length) {
-      clearInterval(drawInterval);
-      const mult = KENO_PAYOUTS[Math.min(hits,10)] || 0;
-      const winAmt = stake * mult;
-      document.getElementById('kenoMatches').textContent = hits + ' 🎯';
-      if (winAmt > 0) { balance += winAmt; updateBalanceDisplay(); kenoUpdateBal(); showToast('🏆 '+hits+' hits! +ETB '+winAmt.toFixed(2)); }
-      else { showToast('😞 '+hits+' hits. Try again!', true); }
-      kenoBetHistory.unshift({round:kenoRoundNum,picks:kenoPicks.size,hits,stake,win:winAmt});
-      kenoRenderHistory(); kenoRoundNum++;
-      document.getElementById('kenoRound').textContent = kenoRoundNum;
-      kenoPlaying = false;
-      document.getElementById('kenoBetBtn').disabled = false;
-      document.getElementById('kenoBetBtn').textContent = 'PLAY KENO';
-      kenoPicks.forEach(n => { const el = document.getElementById('kn'+n); if (el && !drawn.includes(n)) el.classList.add('miss'); });
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      renderMarketsHTML(i, JSON.parse(cached), m);
       return;
     }
-    const num = drawn[idx2++];
-    const numEl = document.getElementById('kn'+num);
-    const isHit = kenoPicks.has(num);
-    if (isHit) { hits++; if (numEl) numEl.classList.add('hit'); }
-    else { if (numEl) numEl.classList.add('drawn'); }
-    const ball = document.createElement('div');
-    ball.className = 'keno-drawn-ball' + (isHit ? ' hit' : '');
-    ball.textContent = num;
-    document.getElementById('kenoDrawn').appendChild(ball);
-  }, 150);
+  } catch(e) {}
+
+  try {
+    const prompt = `Generate football betting markets for this match: ${m.home} (home) vs ${m.away} (away).
+Base odds: home win=${m.w1}, draw=${m.draw}, away win=${m.w2}.
+
+Respond ONLY with a JSON object. No markdown, no explanation. Format:
+{
+  "dc": {"1X": 1.22, "12": 1.30, "X2": 1.45},
+  "ou": {"o15": 1.35, "u15": 2.90, "o25": 1.85, "u25": 1.95, "o35": 2.60, "u35": 1.48},
+  "btts": {"yes": 1.78, "no": 2.02},
+  "ht": {"1": 2.80, "X": 2.10, "2": 5.50},
+  "cs": [["1-0",6.5],["2-0",8.0],["2-1",9.5],["1-1",6.0],["0-0",7.5],["0-1",8.5],["1-2",12.0]],
+  "ah": {"home-0.5": 2.10, "away-0.5": 1.72},
+  "cards": {"o3.5": 1.90, "u3.5": 1.90},
+  "corners": {"o9.5": 1.88, "u9.5": 1.92}
+}
+Make odds realistic and consistent with the base odds provided.`;
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 800, messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await resp.json();
+    const text = (data.content || []).map(c => c.text || '').join('').replace(/```json|```/g,'').trim();
+    const mkts = JSON.parse(text);
+    try { localStorage.setItem(cacheKey, JSON.stringify(mkts)); } catch(e) {}
+    renderMarketsHTML(i, mkts, m);
+  } catch(err) {
+    // Fallback: generate from base odds
+    const mkts = generateFallbackMarkets(m);
+    renderMarketsHTML(i, mkts, m);
+  }
 }
 
-function kenoRenderHistory() {
-  const el = document.getElementById('kenoBetHistory'); if (!el) return;
-  el.innerHTML = kenoBetHistory.slice(0,10).map(h => `
-    <div class="keno-hist-item ${h.win>0?'win':'loss'}">
-      <div>
-        <div style="font-weight:600;color:var(--text);">Round #${h.round} — ${h.picks} picks</div>
-        <div style="color:#3a6a48;font-size:11px;">${h.hits} matches · Stake ETB ${h.stake}</div>
-      </div>
-      <div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:${h.win>0?'var(--green)':'var(--red)'};">
-        ${h.win>0?'+ETB '+h.win.toFixed(2):'-ETB '+h.stake.toFixed(2)}
-      </div>
-    </div>
-  `).join('');
+function generateFallbackMarkets(m) {
+  const r = (v, noise=0.08) => Math.max(1.05, parseFloat((v * (1 + (Math.random()-0.5)*noise)).toFixed(2)));
+  return {
+    dc: { "1X": r(m.w1*0.55), "12": r(m.w1*0.65), "X2": r(m.w2*0.55) },
+    ou: { o15: r(1.30), u15: r(3.00), o25: r(1.85), u25: r(1.95), o35: r(2.55), u35: r(1.50) },
+    btts: { yes: r(1.78), no: r(2.02) },
+    ht: { "1": r(m.w1*1.4), "X": r(m.draw*0.7), "2": r(m.w2*1.4) },
+    cs: [["1-0",r(6.5)],["2-0",r(8.0)],["2-1",r(9.5)],["1-1",r(6.0)],["0-0",r(7.5)],["0-1",r(8.5)],["1-2",r(12.0)]],
+    ah: { [`home-0.5`]: r(m.w1*1.1), [`away-0.5`]: r(m.w2*0.9) },
+    cards: { o35: r(1.90), u35: r(1.90) },
+    corners: { o95: r(1.88), u95: r(1.92) }
+  };
 }
-</script>
-</body>
-</html>
+
+function renderMarketsHTML(i, mkts, m) {
+  const matchName = `${m.home} vs ${m.away}`;
+  function btn(label, key, odd) {
+    return `<div class="odd-btn" onclick="selectOdd(this,'${label}','${key}','${odd}','${matchName}')"><div class="odd-label">${label}</div><div class="odd-value">${parseFloat(odd).toFixed(2)}</div></div>`;
+  }
+  let html = '';
+  // Double Chance
+  html += `<div class="market-title">Dou
